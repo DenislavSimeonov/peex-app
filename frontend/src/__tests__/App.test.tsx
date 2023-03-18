@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { render } from "global/test-utils";
 import App from "../App";
 
 describe("App Components", () => {
