@@ -1,5 +1,6 @@
 import React, { ReactElement } from "react";
 import { render, RenderOptions } from "@testing-library/react";
+import "@testing-library/jest-dom";
 
 const AllTheProviders = ({ children }: { children: React.ReactNode }) => {
   return <>{children}</>;
