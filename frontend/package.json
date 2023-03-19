@@ -17,8 +17,8 @@
     "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
     "eslint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
     "prettier": "prettier 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc --check",
-    "prettier:fix": "prettier 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc --write",
-    "pre-commit": "npm run prettier && npm run eslint --max-warnings=0",
+    "prettier:fix": "prettier \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc --write",
+    "pre-commit": "npm run prettier:fix && npm run eslint --max-warnings=0",
     "prepare": "cd ../ && husky install"
   },
   "eslintConfig": {
