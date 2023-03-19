@@ -1,0 +1,14 @@
+@use 'global/styles/variables';
+
+@mixin card($type: 'primary') {
+  background: variables.$color-white;
+  border-radius: 4px;
+  @if ($type == 'primary') {
+    padding: 20px;
+    border: 1px solid variables.$color-black;
+  } @else {
+    padding: 10px;
+    width: 500px;
+    border: 1px solid variables.$color-gray-light;
+  }
+}
