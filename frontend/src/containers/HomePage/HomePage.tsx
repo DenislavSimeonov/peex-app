@@ -1,13 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import Card from 'components/Card';
 
-const HomePage = () => (
-  <div>
-    <Card type='primary' title='Home Page'>
-      <Card type='secondary' title='Secondary Card'>
-        Secondary Card Content
+const HomePage = () => {
+  const { t } = useTranslation();
+
+  return (
+    <div className='page'>
+      <Card type='primary' title={t('pageHeader.home') as string}>
+        <Card type='secondary' title='Secondary Card'>
+          Secondary Card Content
+        </Card>
       </Card>
-    </Card>
-  </div>
-);
+    </div>
+  );
+};
 
 export default HomePage;

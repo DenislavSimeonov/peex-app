@@ -1,13 +1,19 @@
+import { useTranslation } from 'react-i18next';
 import Card from 'components/Card';
 
-const PageTwo = () => (
-  <div>
-    <Card type='primary' title='Page Two'>
-      <Card type='secondary' title='Secondary Card'>
-        Secondary Card Content
+const PageTwo = () => {
+  const { t } = useTranslation();
+  const header = t('pageHeader.pageTwo');
+
+  return (
+    <div className='page'>
+      <Card type='primary' title={header}>
+        <Card type='secondary' title='Secondary Card'>
+          Secondary Card Content
+        </Card>
       </Card>
-    </Card>
-  </div>
-);
+    </div>
+  );
+};
 
 export default PageTwo;

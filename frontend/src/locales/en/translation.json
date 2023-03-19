@@ -1,0 +1,12 @@
+{
+  "navigation": {
+    "home": "home",
+    "pageOne": "page one",
+    "pageTwo": "page two"
+  },
+  "pageHeader": {
+    "home": "home",
+    "pageOne": "page one",
+    "pageTwo": "page two"
+  }
+}
