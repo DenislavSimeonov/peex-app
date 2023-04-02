@@ -1,12 +1,12 @@
 {
   "navigation": {
-    "home": "home",
-    "pageOne": "page one",
-    "pageTwo": "page two"
+    "home": "Home",
+    "pageOne": "Page one",
+    "pageTwo": "Page two"
   },
   "pageHeader": {
-    "home": "home",
-    "pageOne": "page one",
-    "pageTwo": "page two"
+    "home": "Home",
+    "pageOne": "Page one",
+    "pageTwo": "Page two"
   }
 }

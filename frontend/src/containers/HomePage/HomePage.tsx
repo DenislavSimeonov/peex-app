@@ -6,7 +6,7 @@ const HomePage = () => {
 
   return (
     <div className='page'>
-      <Card type='primary' title={t('pageHeader.home') as string}>
+      <Card type='primary' title={t('pageHeader.home', 'home page') as string}>
         <Card type='secondary' title='Secondary Card'>
           Secondary Card Content
         </Card>
