@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_item_knowledges",
+  "info": {
+    "displayName": "Knowledge"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "information": {
+      "type": "richtext"
+    }
+  }
+}

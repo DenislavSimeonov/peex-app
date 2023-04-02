@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "jobs",
+  "info": {
+    "singularName": "job",
+    "pluralName": "jobs",
+    "displayName": "Job",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "isKey": {
+      "type": "boolean",
+      "required": true
+    },
+    "competency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::competency.competency",
+      "inversedBy": "jobs"
+    },
+    "section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "inversedBy": "jobs"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "jobs"
+    },
+    "level": {
+      "type": "enumeration",
+      "enum": [
+        "trainee",
+        "junior",
+        "middle",
+        "senior"
+      ],
+      "required": true
+    },
+    "task": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item.task",
+      "required": true
+    },
+    "knowledge": {
+      "type": "component",
+      "repeatable": true,
+      "component": "item.knowledge",
+      "required": true
+    }
+  }
+}
