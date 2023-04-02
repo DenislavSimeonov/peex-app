@@ -1,0 +1,21 @@
+@use 'global/styles/mixins';
+@use 'global/styles/variables';
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: variables.$color-green-light;
+  border-bottom: 1px solid variables.$color-black;
+  padding: variables.$spacing-16;
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: variables.$spacing-8;
+  }
+
+  &__item {
+    @include mixins.button($type: 'primary');
+  }
+}

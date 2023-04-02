@@ -1,0 +1,35 @@
+@use 'global/styles/variables';
+
+@mixin card($type: 'primary') {
+  background: variables.$color-white;
+  border-radius: variables.$rounded;
+
+  @if ($type == 'primary') {
+    padding: variables.$spacing-24;
+    border: 1px solid variables.$color-black;
+  } @else {
+    padding: variables.$spacing-16;
+    max-width: 500px;
+    border: 1px solid variables.$color-gray-light;
+  }
+}
+
+@mixin button($type: 'primary') {
+  padding: variables.$spacing-8;
+  text-decoration: none;
+  border-radius: variables.$rounded;
+  cursor: pointer;
+  transition: variables.$transition-opacity;
+
+  @if ($type == 'primary') {
+    background: variables.$color-gray-dark;
+    color: variables.$color-white;
+  } @else {
+    background: variables.$color-gray-light;
+    color: variables.$color-white;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "i18next": "^22.4.12",
+    "i18next-locize-backend": "^6.2.1",
+    "locize": "^2.4.5",
+    "locize-cli": "^7.14.0",
+    "locize-lastused": "^3.2.0",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.0",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "5.0.1",
+    "sass": "^1.59.3",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "npm run locize:download-all && react-scripts test",
+    "eject": "react-scripts eject",
+    "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "eslint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
+    "prettier": "prettier 'src/**/*.{js,jsx,ts,tsx,css,md,json}' --config ./.prettierrc --check",
+    "prettier:fix": "prettier \"src/**/*.{js,jsx,ts,tsx,css,md,json}\" --config ./.prettierrc --write",
+    "pre-commit": "npm run prettier:fix && npm run eslint --max-warnings=0",
+    "prepare": "cd ../ && husky install",
+    "locize:download-en": "locize download --project-id $(grep REACT_APP_LOCIZE_PROJECTID .env | cut -d '=' -f2) --ver latest --language en --namespace translation --path ./src/locales/en",
+    "locize:download-bg": "locize download --project-id $(grep REACT_APP_LOCIZE_PROJECTID .env | cut -d '=' -f2) --ver latest --language bg --namespace translation --path ./src/locales/bg",
+    "locize:download-all": "npm run locize:download-en & npm run locize:download-bg"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/lodash": "^4.14.192",
+    "@types/node": "^16.18.16",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@types/react-router-dom": "^5.3.3",
+    "@typescript-eslint/eslint-plugin": "^5.55.0",
+    "@typescript-eslint/parser": "^5.55.0",
+    "eslint": "^8.36.0",
+    "eslint-config-prettier": "^8.7.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-react": "^7.32.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.0",
+    "prettier": "^2.8.4"
+  }
+}
