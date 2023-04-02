@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_item_tasks",
+  "info": {
+    "displayName": "Task",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "unique": false
+    },
+    "artefacts": {
+      "type": "richtext"
+    }
+  }
+}
