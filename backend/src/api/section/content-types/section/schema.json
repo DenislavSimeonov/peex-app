@@ -34,6 +34,30 @@
       "relation": "oneToMany",
       "target": "api::job.job",
       "mappedBy": "section"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "section"
+    },
+    "knowledges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::knowledge.knowledge",
+      "mappedBy": "section"
+    },
+    "artefacts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artefact.artefact",
+      "mappedBy": "section"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::material.material",
+      "mappedBy": "section"
     }
   }
 }

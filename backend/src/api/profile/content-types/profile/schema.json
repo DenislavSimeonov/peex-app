@@ -60,6 +60,30 @@
       "relation": "oneToMany",
       "target": "api::job.job",
       "mappedBy": "profile"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "profile"
+    },
+    "knowledges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::knowledge.knowledge",
+      "mappedBy": "profile"
+    },
+    "artefacts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artefact.artefact",
+      "mappedBy": "profile"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::material.material",
+      "mappedBy": "profile"
     }
   }
 }

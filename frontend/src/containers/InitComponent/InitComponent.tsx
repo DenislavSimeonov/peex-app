@@ -1,24 +1,32 @@
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { useAuth } from 'hooks/useAuth';
 import { NAV_ITEMS } from 'global/constants';
+import PrivateRoute from 'components/PrivateRoute';
 import Navigation from 'components/Navigation';
+import LoginPage from 'containers/LoginPage';
 import HomePage from 'containers/HomePage';
 import PageOne from 'containers/PageOne';
 import PageTwo from 'containers/PageTwo';
 
 const InitComponent = () => {
+  const { token } = useAuth();
+
   return (
     <Router>
       <Navigation navItems={NAV_ITEMS} />
+
       <Switch>
-        <Route exact path='/'>
+        <Route path='/login'>{token ? <Redirect to='/' /> : <LoginPage />}</Route>
+        <PrivateRoute isAuthenticated={!!token} exact path='/'>
           <HomePage />
-        </Route>
-        <Route exact path='/page-one'>
+        </PrivateRoute>
+        <PrivateRoute isAuthenticated={!!token} path='/page-one'>
           <PageOne />
-        </Route>
-        <Route exact path='/page-two'>
+        </PrivateRoute>
+        <PrivateRoute isAuthenticated={!!token} path='/page-two'>
           <PageTwo />
-        </Route>
+        </PrivateRoute>
+        <Redirect to='/' />
       </Switch>
     </Router>
   );

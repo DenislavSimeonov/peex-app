@@ -49,17 +49,29 @@
       ],
       "required": true
     },
-    "task": {
-      "type": "component",
-      "repeatable": true,
-      "component": "item.task",
-      "required": true
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "job"
     },
-    "knowledge": {
-      "type": "component",
-      "repeatable": true,
-      "component": "item.knowledge",
-      "required": true
+    "knowledges": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::knowledge.knowledge",
+      "mappedBy": "job"
+    },
+    "artefacts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artefact.artefact",
+      "mappedBy": "job"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::material.material",
+      "mappedBy": "job"
     }
   }
 }

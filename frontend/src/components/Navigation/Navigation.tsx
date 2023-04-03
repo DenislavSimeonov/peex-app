@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import LanguageMenu from 'components/LanguageMenu';
+import LogoutButton from 'components/LogoutButton';
 import './Navigation.scss';
 
 type NavItem = {
@@ -8,11 +9,11 @@ type NavItem = {
   localKey: string;
 };
 
-interface Props {
+interface IProps {
   navItems: NavItem[];
 }
 
-const Navigation = ({ navItems }: Props) => {
+const Navigation = ({ navItems }: IProps) => {
   const { t } = useTranslation();
   return (
     <div className='navigation'>
@@ -25,6 +26,7 @@ const Navigation = ({ navItems }: Props) => {
       </div>
       <div className='navigation__language-menu'>
         <LanguageMenu />
+        <LogoutButton />
       </div>
     </div>
   );
