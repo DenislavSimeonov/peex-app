@@ -1,7 +1,7 @@
 @use 'global/styles/mixins';
 @use 'global/styles/variables';
 
-.custom-select {
+.select {
   padding: variables.$spacing-8;
   border-radius: variables.$rounded;
   @include mixins.button($type: 'primary');

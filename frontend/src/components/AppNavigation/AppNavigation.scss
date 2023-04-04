@@ -1,7 +1,7 @@
 @use 'global/styles/mixins';
 @use 'global/styles/variables';
 
-.navigation {
+.app-navigation {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,5 +17,9 @@
 
   &__item {
     @include mixins.button($type: 'primary');
+  }
+
+  &__logout-button {
+    margin-left: 20px;
   }
 }

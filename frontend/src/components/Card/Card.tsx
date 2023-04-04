@@ -1,10 +1,8 @@
 import { ReactNode } from 'react';
 import './Card.scss';
 
-type CardTypes = 'primary' | 'secondary';
-
 interface IProps {
-  type: CardTypes;
+  type: 'primary' | 'secondary';
   title?: string;
   children: ReactNode;
 }

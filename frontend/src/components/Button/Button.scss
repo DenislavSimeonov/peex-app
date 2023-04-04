@@ -1,0 +1,6 @@
+@use 'global/styles/mixins';
+@use 'global/styles/variables';
+
+.button {
+  padding: variables.$spacing-8;
+}

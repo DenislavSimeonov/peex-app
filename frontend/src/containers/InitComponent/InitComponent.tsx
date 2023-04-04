@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-d
 import { useAuth } from 'hooks/useAuth';
 import { NAV_ITEMS } from 'global/constants';
 import PrivateRoute from 'components/PrivateRoute';
-import Navigation from 'components/Navigation';
+import AppNavigation from 'components/AppNavigation';
 import LoginPage from 'containers/LoginPage';
 import HomePage from 'containers/HomePage';
 import PageOne from 'containers/PageOne';
@@ -13,7 +13,7 @@ const InitComponent = () => {
 
   return (
     <Router>
-      <Navigation navItems={NAV_ITEMS} />
+      <AppNavigation navItems={NAV_ITEMS} />
 
       <Switch>
         <Route path='/login'>{token ? <Redirect to='/' /> : <LoginPage />}</Route>
