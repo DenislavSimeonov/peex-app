@@ -21,7 +21,7 @@ const useFetch = (url: string) => {
           throw json.error;
         }
 
-        setData(json);
+        setData(json.data);
       } catch (error: any) {
         setError(error);
       } finally {

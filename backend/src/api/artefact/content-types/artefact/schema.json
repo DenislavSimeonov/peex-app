@@ -4,15 +4,25 @@
   "info": {
     "singularName": "artefact",
     "pluralName": "artefacts",
-    "displayName": "Artefact"
+    "displayName": "Artefact",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "artefact": {
-      "type": "richtext"
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "task": {
       "type": "relation",

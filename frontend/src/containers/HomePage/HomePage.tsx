@@ -3,11 +3,11 @@ import useFetch from 'hooks/useFetch';
 import Card from 'components/Card';
 
 const HomePage = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const { loading, error, data } = useFetch(`${process.env.REACT_APP_BACKEND}profiles?populate=*`);
-
-  console.log(data);
+  const { loading, error, data } = useFetch(
+    `${process.env.REACT_APP_BACKEND}profiles?locale=${i18n.language}`,
+  );
 
   return (
     <div className='page'>
