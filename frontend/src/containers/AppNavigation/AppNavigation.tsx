@@ -1,7 +1,8 @@
 import { ChangeEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { useAuth } from 'hooks/useAuth';
+import useAuth from 'hooks/useAuth';
+import { NAV_ITEMS, LANGUAGE_MENU_ITEMS } from './constants';
 import Select from 'components/Select';
 import Button from 'components/Button';
 import './AppNavigation.scss';
@@ -11,16 +12,7 @@ type NavItem = {
   localKey: string;
 };
 
-interface IProps {
-  navItems: NavItem[];
-}
-
-const AppNavigation = ({ navItems }: IProps) => {
-  const languageOptions = [
-    { label: 'EN', value: 'en' },
-    { label: 'BG', value: 'bg' },
-  ];
-
+const AppNavigation = () => {
   const { t, i18n } = useTranslation();
   const { token, logout } = useAuth();
 
@@ -30,21 +22,21 @@ const AppNavigation = ({ navItems }: IProps) => {
   return (
     <div className='app-navigation'>
       <div className='app-navigation__items'>
-        {navItems.map(({ to, localKey }: NavItem) => (
+        {NAV_ITEMS.map(({ to, localKey }: NavItem) => (
           <Link
-            data-testid='navigation-item-link'
+            data-testid='app-navigation-item-link'
             className='app-navigation__item'
             to={to}
             key={to}
           >
-            {t(`navigation.${localKey}`)}
+            {t(`app-navigation.${localKey}`)}
           </Link>
         ))}
       </div>
       <div className='app-navigation__language-menu'>
         <Select
-          dataTestId='select-language'
-          options={languageOptions}
+          dataTestId='app-navigation-language-select'
+          options={LANGUAGE_MENU_ITEMS}
           handleChange={handleLanguageChange}
         />
         {token && (

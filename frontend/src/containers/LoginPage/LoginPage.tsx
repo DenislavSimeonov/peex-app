@@ -1,82 +1,62 @@
 import { useState } from 'react';
-import { useAuth } from 'hooks/useAuth';
+import useLogin from 'api/hooks/useLogin';
+import AppLoader from 'containers/AppLoader';
+import Card from 'components/Card';
+import { CardTypes } from 'components/Card/enums';
+import Button from 'components/Button';
+import { ButtonTypes } from 'components/Button/enums';
+import Input from 'components/Input';
+import { InputTypes } from 'components/Input/enums';
+import Notification from 'components/Notification';
+import { NotificationTypes } from 'components/Notification/enums';
+import './LoginPage.scss';
 
 const LoginPage = () => {
-  const { login } = useAuth();
-
-  const [error, setError] = useState<any>();
-  const [loading, setLoading] = useState(false);
+  const { login, loading, error } = useLogin();
 
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const onSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault();
-    setLoading(true);
-    setError(undefined);
-
-    try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND}auth/local`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          identifier: username,
-          password: password,
-        }),
-      });
-      const json = await res.json();
-
-      if (json.error) {
-        throw json.error;
-      }
-
-      login({
-        user: {
-          id: json.user.id,
-          name: json.user.username,
-        },
-        token: json.jwt,
-      });
-    } catch (error) {
-      setError(error);
-    } finally {
-      setLoading(false);
-    }
+    login({ username, password });
   };
 
   if (loading) {
-    return <div>Loading ...</div>;
+    return <AppLoader />;
   }
 
   return (
-    <form onSubmit={onSubmit} className='login-form'>
-      {!!error && <div>Error: {error?.message}</div>}
-      <label>
-        Username
-        <input
-          type='text'
-          placeholder='Username'
-          name='username'
-          required
-          onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-
-      <label>
-        Password
-        <input
-          type='password'
-          placeholder='Password'
-          name='password'
-          required
-          onChange={(e) => setPassword(e.target.value)}
-        />
-      </label>
-
-      <button type='submit'>Login</button>
-    </form>
+    <div className='login-page'>
+      <Card type={CardTypes.SECONDARY}>
+        <form onSubmit={onSubmit} className='login-page__form'>
+          {!!error && <Notification type={NotificationTypes.ERROR} message={error?.message} />}
+          <Input
+            dataTestId='username'
+            label='Username'
+            type={InputTypes.TEXT}
+            placeholder='Username'
+            name='username'
+            value={username}
+            isRequired
+            fullWidth
+            handleChange={setUsername}
+          />
+          <Input
+            dataTestId='password'
+            label='Password'
+            type={InputTypes.PASSWORD}
+            placeholder='Password'
+            name='password'
+            value={password}
+            isRequired
+            fullWidth
+            handleChange={setPassword}
+          />
+          <Button type={ButtonTypes.SUBMIT} text='Login' fullWidth />
+        </form>
+      </Card>
+    </div>
   );
 };
 

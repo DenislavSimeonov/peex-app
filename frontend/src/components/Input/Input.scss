@@ -1,0 +1,23 @@
+@use 'global/styles/variables';
+
+.input {
+  display: block;
+
+  &__label {
+    display: block;
+    font-size: variables.$font-size-sm;
+    font-weight: variables.$font-weight-medium;
+    margin-bottom: variables.$spacing-2;
+  }
+
+  &__input-field {
+    display: block;
+    padding: variables.$spacing-8;
+    font-size: variables.$font-size-md;
+    box-sizing: border-box;
+
+    &--full-width {
+      width: 100%;
+    }
+  }
+}

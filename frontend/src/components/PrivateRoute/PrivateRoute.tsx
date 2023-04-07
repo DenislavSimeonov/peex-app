@@ -1,6 +1,12 @@
-import { Route, Redirect } from 'react-router-dom';
+import { ReactNode } from 'react';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 
-const PrivateRoute = ({ children, isAuthenticated, ...rest }: any) => {
+interface IPrivateRoute extends RouteProps {
+  children: ReactNode;
+  isAuthenticated: boolean;
+}
+
+const PrivateRoute = ({ children, isAuthenticated, ...rest }: IPrivateRoute) => {
   return (
     <Route
       {...rest}

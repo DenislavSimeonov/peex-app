@@ -1,0 +1,24 @@
+@use 'global/styles/variables';
+
+.peex-profiles-page {
+  min-height: 100vm;
+  padding: variables.$spacing-24;
+
+  .card {
+    &:not(&--secondary) > .card__title {
+      margin-bottom: variables.$spacing-16;
+    }
+
+    &--secondary {
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .profile-type-subtitle-wrapper {
+      text-align: right;
+      text-transform: capitalize;
+      font-size: variables.$font-size-sm;
+      font-weight: variables.$font-weight-medium;
+    }
+  }
+}

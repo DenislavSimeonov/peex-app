@@ -1,11 +1,14 @@
 import { ReactNode } from 'react';
+import { ButtonVariants, ButtonTypes } from './enums';
 import './Button.scss';
 
 interface IBaseButton {
   dataTestId: string;
-  className: string;
-  type: 'primary' | 'secondary';
-  handleClick: () => void;
+  className?: string;
+  variant: ButtonVariants;
+  type: ButtonTypes;
+  fullWidth: boolean;
+  handleClick?: () => void;
 }
 
 interface IButtonWithText extends IBaseButton {
@@ -19,11 +22,16 @@ interface IButtonWithChildren extends IBaseButton {
 
 type ButtonType = IButtonWithText | IButtonWithChildren;
 
-const Button = ({ dataTestId, className, text, children, type, handleClick }: ButtonType) => {
+const Button = (props: ButtonType) => {
+  const { dataTestId, className, text, children, variant, type, fullWidth, handleClick } = props;
+
   return (
     <button
       data-testid={dataTestId}
-      className={`button button--${type} ${className}`}
+      className={`button button--${variant} ${fullWidth ? 'button--full-width' : ''} ${
+        className ? className : ''
+      }`}
+      type={type}
       onClick={handleClick}
     >
       {text}
@@ -34,7 +42,9 @@ const Button = ({ dataTestId, className, text, children, type, handleClick }: Bu
 
 Button.defaultProps = {
   dataTestId: 'button',
-  type: 'primary',
+  variant: ButtonVariants.PRIMARY,
+  type: ButtonTypes.BUTTON,
+  fullWidth: false,
 };
 
 export default Button;

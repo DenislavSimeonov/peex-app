@@ -1,0 +1,22 @@
+@use 'global/styles/variables';
+
+.login-page {
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+
+  .card--secondary {
+    height: max-content;
+    margin-top: variables.$spacing-80;
+    padding: variables.$spacing-36 variables.$spacing-24;
+    width: 400px;
+  }
+
+  .notification--error {
+    margin-bottom: variables.$spacing-36;
+  }
+
+  .input {
+    margin-bottom: variables.$spacing-16;
+  }
+}

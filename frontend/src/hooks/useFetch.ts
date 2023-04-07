@@ -1,32 +1,28 @@
 import { useEffect, useState } from 'react';
-import { useAuth } from './useAuth';
+import useAuth from './useAuth';
+import { ErrorType } from 'global/types';
 
 const useFetch = (url: string) => {
   const { token } = useAuth();
   const [data, setData] = useState();
-  const [error, setError] = useState();
+  const [error, setError] = useState<ErrorType | null>(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setError(null);
 
-      try {
-        const res = await fetch(url, {
-          headers: { Authorization: `Bearer ${token}` },
-        });
-        const json = await res.json();
-
-        if (json.error) {
-          throw json.error;
-        }
-
-        setData(json.data);
-      } catch (error: any) {
-        setError(error);
-      } finally {
-        setLoading(false);
-      }
+      fetch(url, { headers: { Authorization: `Bearer ${token}` } })
+        .then((response) => {
+          if (!response.ok) {
+            throw Error(response.statusText);
+          }
+          return response.json();
+        })
+        .then(({ data }) => setData(data))
+        .catch(setError)
+        .finally(() => setLoading(false));
     };
 
     fetchData();

@@ -1,20 +1,24 @@
 @use 'global/styles/mixins';
 @use 'global/styles/variables';
 
-.card--primary {
-  @include mixins.card($type: 'primary');
+.card {
+  box-sizing: border-box;
 
-  .card__title {
-    font-size: variables.$font-size-xl;
-    font-weight: variables.$font-weight-bold;
+  &--primary {
+    @include mixins.card($type: 'primary');
+
+    .card__title {
+      font-size: variables.$font-size-xl;
+      font-weight: variables.$font-weight-bold;
+    }
   }
-}
 
-.card--secondary {
-  @include mixins.card($type: 'secondary');
+  &--secondary {
+    @include mixins.card($type: 'secondary');
 
-  .card__title {
-    font-size: variables.$font-size-lg;
-    font-weight: variables.$font-weight-medium;
+    .card__title {
+      font-size: variables.$font-size-lg;
+      font-weight: variables.$font-weight-medium;
+    }
   }
 }

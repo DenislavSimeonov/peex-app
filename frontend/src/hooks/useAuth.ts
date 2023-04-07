@@ -9,7 +9,7 @@ interface ILogin {
 
 const TOKEN = 'token';
 
-export const useAuth = () => {
+const useAuth = () => {
   const { setItem, getItem, removeItem } = useLocalStorage();
   const token = getItem(TOKEN);
   const { addUser, removeUser } = useUser();
@@ -26,3 +26,5 @@ export const useAuth = () => {
 
   return { token, login, logout };
 };
+
+export default useAuth;

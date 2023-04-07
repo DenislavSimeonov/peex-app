@@ -1,10 +1,9 @@
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { useAuth } from 'hooks/useAuth';
-import { NAV_ITEMS } from 'global/constants';
+import useAuth from 'hooks/useAuth';
 import PrivateRoute from 'components/PrivateRoute';
-import AppNavigation from 'components/AppNavigation';
+import AppNavigation from 'containers/AppNavigation';
 import LoginPage from 'containers/LoginPage';
-import HomePage from 'containers/HomePage';
+import PeExProfilesPage from 'containers/PeExProfilesPage';
 import PageOne from 'containers/PageOne';
 import PageTwo from 'containers/PageTwo';
 
@@ -13,12 +12,12 @@ const InitComponent = () => {
 
   return (
     <Router>
-      <AppNavigation navItems={NAV_ITEMS} />
+      <AppNavigation />
 
       <Switch>
-        <Route path='/login'>{token ? <Redirect to='/' /> : <LoginPage />}</Route>
-        <PrivateRoute isAuthenticated={!!token} exact path='/'>
-          <HomePage />
+        <Route path='/login'>{token ? <Redirect to='/profiles' /> : <LoginPage />}</Route>
+        <PrivateRoute isAuthenticated={!!token} path='/profiles'>
+          <PeExProfilesPage />
         </PrivateRoute>
         <PrivateRoute isAuthenticated={!!token} path='/page-one'>
           <PageOne />
@@ -26,7 +25,7 @@ const InitComponent = () => {
         <PrivateRoute isAuthenticated={!!token} path='/page-two'>
           <PageTwo />
         </PrivateRoute>
-        <Redirect to='/' />
+        <Redirect to='/profiles' />
       </Switch>
     </Router>
   );

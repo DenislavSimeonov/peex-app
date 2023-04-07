@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import Card from 'components/Card';
+import { CardTypes } from 'components/Card/enums';
 
 const PageOne = () => {
   const { t } = useTranslation();
@@ -7,8 +8,8 @@ const PageOne = () => {
 
   return (
     <div className='page'>
-      <Card type='primary' title={header}>
-        <Card type='secondary' title='Secondary Card'>
+      <Card type={CardTypes.PRIMARY} title={header}>
+        <Card type={CardTypes.SECONDARY} title='Secondary Card'>
           Secondary Card Content
         </Card>
       </Card>

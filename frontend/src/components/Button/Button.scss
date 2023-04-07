@@ -2,5 +2,20 @@
 @use 'global/styles/variables';
 
 .button {
+  font-size: variables.$font-size-md;
+  font-weight: variables.$font-weight-medium;
+
+  &--primary {
+    @include mixins.button($type: 'primary');
+  }
+
+  &--secondary {
+    @include mixins.button($type: 'secondary');
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
   padding: variables.$spacing-8;
 }
