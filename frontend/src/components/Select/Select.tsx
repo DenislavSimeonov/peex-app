@@ -1,23 +1,24 @@
 import { ChangeEvent } from 'react';
 import './Select.scss';
 
-type SelectOption = {
+export type SelectOption = {
   label: string;
   value: string;
 };
 
 interface ISelect {
   dataTestId: string;
+  value?: string;
   options: SelectOption[];
   handleChange: (e: ChangeEvent<HTMLSelectElement>) => void;
 }
 
-const Select = ({ dataTestId, options, handleChange }: ISelect) => {
+const Select = ({ dataTestId, value, options, handleChange }: ISelect) => {
   return (
-    <select data-testid={dataTestId} className='select' onChange={handleChange}>
-      {options.map((item) => (
-        <option key={item.value} className='select__option' value={item.value}>
-          {item.label}
+    <select data-testid={dataTestId} value={value} className='select' onChange={handleChange}>
+      {options.map((option) => (
+        <option key={option.value} className='select__option' value={option.value}>
+          {option.label}
         </option>
       ))}
     </select>

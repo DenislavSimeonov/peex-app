@@ -17,7 +17,6 @@ const useLogin = () => {
     setLoading(true);
     setError(null);
 
-    console.log;
     fetch(`${process.env.REACT_APP_BACKEND}auth/local`, {
       method: 'POST',
       headers: {

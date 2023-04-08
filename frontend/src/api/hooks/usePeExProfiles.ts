@@ -1,5 +1,5 @@
-import { useTranslation } from 'react-i18next';
 import useFetch from 'hooks/useFetch';
+import { useSettings } from 'hooks/useSettings';
 
 type PeExProfile = {
   id: number;
@@ -23,13 +23,13 @@ export type TransformedPeExProfile = {
 };
 
 const usePeExProfiles = () => {
-  const { i18n } = useTranslation();
+  const { settings } = useSettings();
 
   const {
     loading,
     error,
     data = [],
-  } = useFetch(`${process.env.REACT_APP_BACKEND}profiles?locale=${i18n.language}`);
+  } = useFetch(`${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}`);
 
   const profiles = data?.map(
     (profile: PeExProfile): TransformedPeExProfile => ({

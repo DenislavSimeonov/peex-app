@@ -1,13 +1,15 @@
 import InitComponent from 'containers/InitComponent';
-import { UserContextProvider } from 'context/UserContext';
+import { SettingsContextProvider, UserContextProvider } from 'context';
 
 import 'global/styles/index.scss';
 
 const App = () => {
   return (
-    <UserContextProvider>
-      <InitComponent />
-    </UserContextProvider>
+    <SettingsContextProvider>
+      <UserContextProvider>
+        <InitComponent />
+      </UserContextProvider>
+    </SettingsContextProvider>
   );
 };
 
