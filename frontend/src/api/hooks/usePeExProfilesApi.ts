@@ -1,7 +1,7 @@
 import useFetch from 'hooks/useFetch';
 import { useSettings } from 'hooks/useSettings';
 
-type PeExProfile = {
+export type PeExProfile = {
   id: number;
   attributes: {
     createdAt: string;
@@ -22,7 +22,7 @@ export type TransformedPeExProfile = {
   type: string;
 };
 
-const usePeExProfiles = () => {
+const usePeExProfilesApi = () => {
   const { settings } = useSettings();
 
   const {
@@ -44,4 +44,4 @@ const usePeExProfiles = () => {
   return { loading, error, data: profiles };
 };
 
-export default usePeExProfiles;
+export default usePeExProfilesApi;

@@ -1,11 +1,8 @@
-import { ChangeEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import useAuth from 'hooks/useAuth';
 import { useUser } from 'hooks/useUser';
-import { useSettings } from 'hooks/useSettings';
-import { NAV_ITEMS, LANGUAGE_MENU_ITEMS } from './constants';
-import Select from 'components/Select/Select';
+import { NAV_ITEMS, SETTINGS } from './constants';
 import Button from 'components/Button';
 import './AppNavigation.scss';
 
@@ -15,21 +12,10 @@ type NavItem = {
 };
 
 const AppNavigation = () => {
-  const { settings, addSettings } = useSettings();
-  const { i18n, t } = useTranslation();
+  const { t } = useTranslation();
+
   const { logout } = useAuth();
   const { user } = useUser();
-
-  const changeI18nLanguage = (val: string) => i18n.changeLanguage(val);
-  useEffect(() => {
-    changeI18nLanguage(settings.language);
-  }, []);
-
-  const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    const language = e.target.value;
-    addSettings({ language });
-    changeI18nLanguage(language);
-  };
 
   return (
     <div className='app-navigation'>
@@ -45,22 +31,24 @@ const AppNavigation = () => {
           </Link>
         ))}
       </div>
-      <div className='app-navigation__language-menu'>
-        <Select
-          dataTestId='app-navigation-language-select'
-          value={settings?.language}
-          options={LANGUAGE_MENU_ITEMS}
-          handleChange={handleLanguageChange}
-        />
-        {user?.id && (
+
+      {user?.id && (
+        <div className='app-navigation__right-section'>
+          <Link
+            data-testid='app-navigation-settings-button'
+            className='app-navigation__settings-button'
+            to={SETTINGS.path}
+          >
+            {SETTINGS.label}
+          </Link>
           <Button
             className='app-navigation__logout-button'
             dataTestId='logout-button'
             text='Logout'
             handleClick={logout}
           />
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

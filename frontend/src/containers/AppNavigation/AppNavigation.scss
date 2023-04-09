@@ -8,6 +8,8 @@
   background: variables.$color-green-light;
   border-bottom: 1px solid variables.$color-black;
   padding: variables.$spacing-16;
+  height: variables.$appNavigationHeight;
+  box-sizing: border-box;
 
   &__items {
     display: grid;
@@ -15,7 +17,8 @@
     column-gap: variables.$spacing-8;
   }
 
-  &__item {
+  &__item,
+  &__settings-button {
     @include mixins.button($type: 'primary');
   }
 

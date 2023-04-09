@@ -15,10 +15,18 @@
 
   &--secondary {
     @include mixins.card($type: 'secondary');
+    transition: all 0.3s ease-out;
+    cursor: pointer;
 
     .card__title {
       font-size: variables.$font-size-lg;
       font-weight: variables.$font-weight-medium;
+    }
+
+    &:hover {
+      color: variables.$color-green-dark;
+      background: variables.$color-green-light;
+      transform: scale(1.1);
     }
   }
 }

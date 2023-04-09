@@ -4,8 +4,8 @@ import ProtectedRoute from 'components/ProtectedRoute';
 import AppNavigation from 'containers/AppNavigation';
 import LoginPage from 'containers/LoginPage';
 import PeExProfilesPage from 'containers/PeExProfilesPage';
-import PageOne from 'containers/PageOne';
-import PageTwo from 'containers/PageTwo';
+import CompetenciesPage from 'containers/CompetenciesPage';
+import SettingsPage from 'containers/SettingsPage';
 
 const InitComponent = () => {
   const { token } = useAuth();
@@ -20,11 +20,14 @@ const InitComponent = () => {
         <Route element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}>
           <Route path='/profiles' element={<PeExProfilesPage />} />
         </Route>
-        <Route element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}>
-          <Route path='/page-one' element={<PageOne />} />
+        <Route
+          path='/competencies/*'
+          element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}
+        >
+          <Route path=':id/:section_id?' element={<CompetenciesPage />} />
         </Route>
         <Route element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}>
-          <Route path='/page-two' element={<PageTwo />} />
+          <Route path='/settings' element={<SettingsPage />} />
         </Route>
         <Route path='*' element={<Navigate to='/profiles' replace />} />
       </Routes>

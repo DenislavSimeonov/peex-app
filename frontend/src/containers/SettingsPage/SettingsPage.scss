@@ -1,0 +1,12 @@
+@use 'global/styles/variables';
+
+.settings-page {
+  min-height: 100vm;
+  padding: variables.$spacing-24;
+
+  &__label {
+    display: inline-block;
+    margin-right: variables.$spacing-8;
+    font-size: variables.$font-size-md;
+  }
+}

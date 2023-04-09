@@ -1,0 +1,26 @@
+@use 'global/styles/mixins';
+@use 'global/styles/variables';
+
+.side-navigation {
+  width: 200px;
+  height: calc(100vh - variables.$appNavigationHeight);
+  box-sizing: border-box;
+  padding: variables.$spacing-16;
+  background: variables.$color-green-light;
+  border-bottom: 1px solid variables.$color-black;
+  overflow-y: auto;
+
+  &__items-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__items {
+    display: grid;
+    row-gap: variables.$spacing-4;
+  }
+
+  &__logout-button {
+    margin-left: 20px;
+  }
+}

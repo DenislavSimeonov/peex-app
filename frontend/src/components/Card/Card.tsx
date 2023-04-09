@@ -7,10 +7,11 @@ interface IProps {
   type: CardTypes;
   title?: string;
   children?: ReactNode;
+  handleClick?: () => void;
 }
 
-const Card = ({ dataTestId, type, title, children }: IProps) => (
-  <div className={`card card--${type}`} data-testif={dataTestId}>
+const Card = ({ dataTestId, type, title, children, handleClick }: IProps) => (
+  <div className={`card card--${type}`} data-testif={dataTestId} onClick={handleClick}>
     <div className='card__title'>{title}</div>
     {children}
   </div>
