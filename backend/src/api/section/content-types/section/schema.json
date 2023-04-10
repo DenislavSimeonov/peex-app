@@ -26,12 +26,6 @@
         }
       }
     },
-    "competencies": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::competency.competency",
-      "mappedBy": "section"
-    },
     "profile": {
       "type": "relation",
       "relation": "manyToOne",
@@ -66,6 +60,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::material.material",
+      "mappedBy": "section"
+    },
+    "competencies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::competency.competency",
       "mappedBy": "section"
     }
   }

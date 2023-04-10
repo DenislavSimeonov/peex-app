@@ -1,26 +1,6 @@
 import useFetch from 'hooks/useFetch';
 import { useSettings } from 'hooks/useSettings';
-
-export type PeExProfile = {
-  id: number;
-  attributes: {
-    createdAt: string;
-    locale: string;
-    publishedAt: string;
-    subType: string;
-    title: string;
-    type: string;
-    updatedAt: string;
-  };
-};
-
-export type TransformedPeExProfile = {
-  id: number;
-  locale: string;
-  subType: string;
-  title: string;
-  type: string;
-};
+import { StrapiProfileData, TransformedProfileStrapiData } from './types';
 
 const usePeExProfilesApi = () => {
   const { settings } = useSettings();
@@ -32,7 +12,7 @@ const usePeExProfilesApi = () => {
   } = useFetch(`${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}`);
 
   const profiles = data?.map(
-    (profile: PeExProfile): TransformedPeExProfile => ({
+    (profile: StrapiProfileData): TransformedProfileStrapiData => ({
       id: profile.id,
       locale: profile.attributes.locale,
       subType: profile.attributes.subType,

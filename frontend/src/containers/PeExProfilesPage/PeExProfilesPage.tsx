@@ -26,7 +26,7 @@ const PeExProfilesPage = () => {
                 dataTestId={`profile-${index}-title`}
                 type={CardTypes.SECONDARY}
                 title={title}
-                handleClick={() => navigate(`/competencies/${id}`)}
+                handleClick={() => navigate(`/sections/${id}`)}
               >
                 <div className='profile-type-subtitle-wrapper'>
                   <div data-testid={`profile-${index}-type`}>{type}</div>

@@ -4,7 +4,7 @@ import ProtectedRoute from 'components/ProtectedRoute';
 import AppNavigation from 'containers/AppNavigation';
 import LoginPage from 'containers/LoginPage';
 import PeExProfilesPage from 'containers/PeExProfilesPage';
-import CompetenciesPage from 'containers/CompetenciesPage';
+import SectionsPage from 'containers/SectionsPage';
 import SettingsPage from 'containers/SettingsPage';
 
 const InitComponent = () => {
@@ -21,10 +21,10 @@ const InitComponent = () => {
           <Route path='/profiles' element={<PeExProfilesPage />} />
         </Route>
         <Route
-          path='/competencies/*'
+          path='/sections/*'
           element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}
         >
-          <Route path=':id/:section_id?' element={<CompetenciesPage />} />
+          <Route path=':id/:section_id?' element={<SectionsPage />} />
         </Route>
         <Route element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}>
           <Route path='/settings' element={<SettingsPage />} />
