@@ -1,6 +1,7 @@
+import _ from 'lodash';
 import useFetch from 'hooks/useFetch';
 import { useSettings } from 'hooks/useSettings';
-import { StrapiData, TransformedStrapiData, UseFetchState } from './types';
+import { CompetenciesFromStrapi, CompetenciesTransformed, UseFetchState } from './types';
 
 const useCompetencyBySectionIdApi = (id?: string) => {
   const { settings } = useSettings();
@@ -14,15 +15,14 @@ const useCompetencyBySectionIdApi = (id?: string) => {
   if (data?.length) {
     const sectionsData = data[0].attributes.competencies.data;
     competencies = sectionsData?.map(
-      (section: StrapiData): TransformedStrapiData => ({
+      (section: CompetenciesFromStrapi): CompetenciesTransformed => ({
         id: section.id,
-        locale: section.attributes.locale,
         title: section.attributes.title,
       }),
     );
   }
 
-  return { loading, error, data: competencies };
+  return { loading, error, data: _.sortBy(competencies, ['title']) };
 };
 
 export default useCompetencyBySectionIdApi;

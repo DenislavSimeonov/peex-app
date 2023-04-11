@@ -1,6 +1,7 @@
+import _ from 'lodash';
 import useFetch from 'hooks/useFetch';
 import { useSettings } from 'hooks/useSettings';
-import { StrapiProfileData, TransformedProfileStrapiData } from './types';
+import { ProfileFromStrapi, ProfileTransformed } from './types';
 
 const usePeExProfilesApi = () => {
   const { settings } = useSettings();
@@ -12,16 +13,15 @@ const usePeExProfilesApi = () => {
   } = useFetch(`${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}`);
 
   const profiles = data?.map(
-    (profile: StrapiProfileData): TransformedProfileStrapiData => ({
+    (profile: ProfileFromStrapi): ProfileTransformed => ({
       id: profile.id,
-      locale: profile.attributes.locale,
       subType: profile.attributes.subType,
       title: profile.attributes.title,
       type: profile.attributes.type,
     }),
   );
 
-  return { loading, error, data: profiles };
+  return { loading, error, data: _.sortBy(profiles, ['title']) };
 };
 
 export default usePeExProfilesApi;

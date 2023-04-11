@@ -15,17 +15,19 @@
 
   &--secondary {
     @include mixins.card($type: 'secondary');
-    transition: all 0.3s ease-out;
-    cursor: pointer;
 
     .card__title {
       font-size: variables.$font-size-lg;
       font-weight: variables.$font-weight-medium;
     }
+  }
+
+  &--animated {
+    cursor: pointer;
+    transition: all 0.3s ease-out;
 
     &:hover {
-      color: variables.$color-green-dark;
-      background: variables.$color-green-light;
+      opacity: 0.8;
       transform: scale(1.1);
     }
   }

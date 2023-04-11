@@ -1,48 +1,62 @@
-type Attributes = {
+type ProfileAttributes = {
   title: string;
-  locale: string;
-  createdAt: string;
-  publishedAt: string;
-  updatedAt: string;
-};
-
-export type StrapiData = {
-  id: number;
-  attributes: Attributes;
-};
-
-export type TransformedStrapiData = {
-  id: number;
-  locale: string;
-  title: string;
-};
-
-export type StrapiProfileData = {
-  id: number;
-  attributes: Attributes & {
-    subType: string;
-    type: string;
-  };
-};
-
-export type TransformedProfileStrapiData = TransformedStrapiData & {
   subType: string;
   type: string;
 };
-
-export type StrapiJobData = {
-  id: number;
-  attributes: Attributes & {
-    isKey: boolean;
+type SectionsAttributes = {
+  title: string;
+  profile?: string;
+  competencies: {
+    data: CompetenciesFromStrapi[];
   };
 };
-
-export type TransformedJobStrapiData = TransformedStrapiData & {
+type CompetenciesAttributes = {
+  title: string;
+};
+type JobsAttributes = {
+  title: string;
   isKey: boolean;
+  level: string;
+};
+
+export type ProfileFromStrapi = {
+  id: number;
+  attributes: ProfileAttributes;
+};
+export type SectionsFromStrapi = {
+  id: number;
+  attributes: SectionsAttributes;
+};
+export type CompetenciesFromStrapi = {
+  id: number;
+  attributes: CompetenciesAttributes;
+};
+export type JobsFromStrapi = {
+  id: number;
+  attributes: JobsAttributes;
+};
+
+export type ProfileTransformed = ProfileAttributes & {
+  id: number;
+};
+export type SectionsTransformed = {
+  id: number;
+  title: string;
+  profile?: string;
+  competencies: {
+    id: number;
+    title: string;
+  }[];
+};
+export type CompetenciesTransformed = CompetenciesAttributes & {
+  id: number;
+};
+export type JobsTransformed = JobsAttributes & {
+  id: number;
 };
 
 export type UseFetchState = {
-  loading: boolean;
   error: any;
+  loading: boolean;
   data: any;
 };

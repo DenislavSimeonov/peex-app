@@ -1,28 +1,31 @@
+import _ from 'lodash';
 import useFetch from 'hooks/useFetch';
 import { useSettings } from 'hooks/useSettings';
-import { StrapiData, TransformedStrapiData, UseFetchState } from './types';
+import { SectionsFromStrapi, SectionsTransformed, CompetenciesFromStrapi } from './types';
 
 const useSectionsByProfileIdApi = (id?: string) => {
   const { settings } = useSettings();
 
-  const { loading, error, data }: UseFetchState = useFetch(
-    `${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}&filters[id][$eq]=${id}&populate[0]=sections`,
+  const {
+    loading,
+    error,
+    data = [],
+  } = useFetch(
+    `${process.env.REACT_APP_BACKEND}sections?locale=${settings?.language}&filters[profile][id][$eq]=${id}&populate[0]=profile&populate[1]=competencies`,
   );
 
-  let sections = [];
-
-  if (data?.length) {
-    const sectionsData = data[0].attributes.sections.data;
-    sections = sectionsData?.map(
-      (section: StrapiData): TransformedStrapiData => ({
-        id: section.id,
-        locale: section.attributes.locale,
-        title: section.attributes.title,
-      }),
+  const sections = data?.map((section: SectionsFromStrapi): SectionsTransformed => {
+    const competencies = section.attributes.competencies.data.map(
+      ({ id, attributes }: CompetenciesFromStrapi) => ({ id, title: attributes.title }),
     );
-  }
+    return {
+      id: section.id,
+      title: section.attributes.title,
+      competencies,
+    };
+  });
 
-  return { loading, error, data: sections };
+  return { loading, error, data: _.sortBy(sections, ['title']) };
 };
 
 export default useSectionsByProfileIdApi;

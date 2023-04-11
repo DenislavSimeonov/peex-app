@@ -7,11 +7,16 @@ interface IProps {
   type: CardTypes;
   title?: string;
   children?: ReactNode;
+  hoverEffect: boolean;
   handleClick?: () => void;
 }
 
-const Card = ({ dataTestId, type, title, children, handleClick }: IProps) => (
-  <div className={`card card--${type}`} data-testif={dataTestId} onClick={handleClick}>
+const Card = ({ dataTestId, type, title, children, hoverEffect, handleClick }: IProps) => (
+  <div
+    className={`card card--${type} ${hoverEffect ? 'card--animated' : ''}`}
+    data-testif={dataTestId}
+    onClick={handleClick}
+  >
     <div className='card__title'>{title}</div>
     {children}
   </div>
@@ -19,5 +24,6 @@ const Card = ({ dataTestId, type, title, children, handleClick }: IProps) => (
 
 Card.defaultProps = {
   dataTestId: 'card',
+  hoverEffect: false,
 };
 export default Card;

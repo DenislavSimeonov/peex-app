@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "constants",
+  "info": {
+    "singularName": "constant",
+    "pluralName": "constants",
+    "displayName": "constant",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "jobLevels": {
+      "type": "json",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

@@ -1,6 +1,7 @@
+import _ from 'lodash';
 import useFetch from 'hooks/useFetch';
 import { useSettings } from 'hooks/useSettings';
-import { StrapiJobData, TransformedJobStrapiData, UseFetchState } from './types';
+import { JobsFromStrapi, JobsTransformed, UseFetchState } from './types';
 
 const useJobsByCompetencyIdApi = (id?: string) => {
   const { settings } = useSettings();
@@ -14,16 +15,16 @@ const useJobsByCompetencyIdApi = (id?: string) => {
   if (data?.length) {
     const competenciesData = data[0].attributes.jobs.data;
     jobs = competenciesData?.map(
-      (competency: StrapiJobData): TransformedJobStrapiData => ({
+      (competency: JobsFromStrapi): JobsTransformed => ({
         id: competency.id,
-        locale: competency.attributes.locale,
         title: competency.attributes.title,
         isKey: competency.attributes.isKey,
+        level: competency.attributes.level,
       }),
     );
   }
 
-  return { loading, error, data: jobs };
+  return { loading, error, data: _.sortBy(jobs, ['level', 'title']) };
 };
 
 export default useJobsByCompetencyIdApi;

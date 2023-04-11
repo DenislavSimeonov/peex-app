@@ -18,25 +18,22 @@ const PeExProfilesPage = () => {
     <div className='peex-profiles-page'>
       {loading && !profiles.length && <AppLoader />}
       {error && <Notification type={NotificationTypes.ERROR} message={error?.message} />}
-      <Card type={CardTypes.PRIMARY} title={t('pageHeader.profiles') as string}>
-        <>
-          {profiles.map(({ id, title, type, subType }, index) => (
-            <Fragment key={id}>
-              <Card
-                dataTestId={`profile-${index}-title`}
-                type={CardTypes.SECONDARY}
-                title={title}
-                handleClick={() => navigate(`/sections/${id}`)}
-              >
-                <div className='profile-type-subtitle-wrapper'>
-                  <div data-testid={`profile-${index}-type`}>{type}</div>
-                  <div data-testid={`profile-${index}-subtitle`}>{subType}</div>
-                </div>
-              </Card>
-            </Fragment>
-          ))}
-        </>
-      </Card>
+      {profiles.map(({ id, title, type, subType }, index) => (
+        <Fragment key={id}>
+          <Card
+            dataTestId={`profile-${index}-title`}
+            type={CardTypes.SECONDARY}
+            title={title}
+            hoverEffect
+            handleClick={() => navigate(`/competency/${id}`)}
+          >
+            <div className='profile-type-subtitle-wrapper'>
+              <div data-testid={`profile-${index}-type`}>{type}</div>
+              <div data-testid={`profile-${index}-subtitle`}>{subType}</div>
+            </div>
+          </Card>
+        </Fragment>
+      ))}
     </div>
   );
 };

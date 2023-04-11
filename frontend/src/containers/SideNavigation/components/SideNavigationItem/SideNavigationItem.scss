@@ -1,0 +1,25 @@
+@use 'global/styles/variables';
+
+.side-navigation__item {
+  text-align: left;
+  font-size: variables.$font-size-sm;
+  padding: variables.$spacing-8 variables.$spacing-8;
+  border-top: 1px solid variables.$color-gray-light;
+  border-left: 5px solid variables.$color-white;
+  background: variables.$color-white;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: 1px solid variables.$color-gray-light;
+  }
+
+  &--active {
+    font-weight: variables.$font-weight-bold;
+    border-left: 5px solid variables.$color-green-dark;
+  }
+
+  &:hover {
+    background: lighten(variables.$color-green-light, 20%);
+  }
+}

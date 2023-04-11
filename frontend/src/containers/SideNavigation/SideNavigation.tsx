@@ -1,11 +1,15 @@
-import { Dispatch, SetStateAction } from 'react';
-import Button from 'components/Button';
 import { ButtonVariants } from 'components/Button/enums';
+import SideNavigationItem from './components/SideNavigationItem';
 import './SideNavigation.scss';
 
+type Competency = {
+  id: number;
+  title: string;
+};
 export type SideNavItem = {
   id: number;
   title: string;
+  competencies: Competency[];
 };
 
 export interface ISideNavItems {
@@ -19,15 +23,18 @@ const SideNavigation = ({ items, selectedItemId, handleClick }: ISideNavItems) =
     <div className='side-navigation'>
       <div className='side-navigation__items-wrapper'>
         <div className='side-navigation__items'>
-          {items?.map(({ id, title }: SideNavItem) => (
-            <Button
-              key={id}
-              data-testid='side-navigation-item-link'
-              className='side-navigation__item'
-              variant={selectedItemId == id ? ButtonVariants.SECONDARY : ButtonVariants.PRIMARY}
-              text={title}
-              handleClick={() => handleClick(id)}
-            />
+          {items?.map(({ id, title, competencies }: SideNavItem) => (
+            <div key={`section-${id}`} className='side-navigation__section'>
+              <div className='side-navigation__section__title'>{title}</div>
+              {competencies.map(({ id, title }: Competency) => (
+                <SideNavigationItem
+                  key={`competencies-${id}`}
+                  title={title}
+                  isActive={id === selectedItemId}
+                  handleClick={() => handleClick(id)}
+                />
+              ))}
+            </div>
           ))}
         </div>
       </div>

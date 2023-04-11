@@ -1,24 +1,28 @@
 @use 'global/styles/variables';
 
 .peex-profiles-page {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  column-gap: variables.$spacing-16;
+  row-gap: variables.$spacing-16;
+
   min-height: 100vm;
   padding: variables.$spacing-24;
 
   .card {
-    &:not(&--secondary) > .card__title {
-      margin-bottom: variables.$spacing-16;
-    }
+    background: variables.$color-green-light;
+    padding: variables.$spacing-36;
 
-    &--secondary {
-      width: 100%;
-      max-width: 300px;
+    &:hover {
+      background: darken(variables.$color-green-light, 20%);
     }
 
     .profile-type-subtitle-wrapper {
-      text-align: right;
+      text-align: center;
       text-transform: capitalize;
       font-size: variables.$font-size-sm;
       font-weight: variables.$font-weight-medium;
+      margin-top: variables.$spacing-8;
     }
   }
 }
