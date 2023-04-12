@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import useAuth from './useAuth';
+import { useAuth, useErrorNotifications, useIsAppLoading } from 'hooks';
 import { ErrorType } from 'global/types';
 
 const useFetch = (url: string) => {
@@ -8,10 +8,16 @@ const useFetch = (url: string) => {
   const [error, setError] = useState<ErrorType | null>(null);
   const [loading, setLoading] = useState(true);
 
+  useErrorNotifications(error);
+  useIsAppLoading(loading && !data);
+
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
       setError(null);
+
+      // Added for test purposes
+      await new Promise((resolve) => setTimeout(resolve, 500));
 
       fetch(url, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {

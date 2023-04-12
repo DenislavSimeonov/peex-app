@@ -1,6 +1,5 @@
 import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useErrorNotifications, useIsAppLoading } from 'hooks';
 import { usePeExProfilesApi } from 'api/hooks';
 import Card from 'components/Card';
 import { CardTypes } from 'components/Card/enums';
@@ -8,9 +7,7 @@ import './PeExProfilesPage.scss';
 
 const PeExProfilesPage = () => {
   const navigate = useNavigate();
-  const { loading, error, data: profiles } = usePeExProfilesApi();
-  useErrorNotifications(error);
-  useIsAppLoading(loading && !profiles);
+  const { data: profiles } = usePeExProfilesApi();
 
   return (
     <div className='peex-profiles-page'>

@@ -1,5 +1,4 @@
 import { memo } from 'react';
-import { useErrorNotifications, useIsAppLoading } from 'hooks';
 import { useJobsByCompetencyIdApi, useConstantsApi } from 'api/hooks';
 import { JobsTransformed } from 'api/hooks/types';
 import './Jobs.scss';
@@ -9,15 +8,8 @@ type PropsType = {
 };
 
 const Jobs = ({ competencyId }: PropsType) => {
-  const {
-    loading: jobsLoading,
-    error: jobsError,
-    data: jobs,
-  } = useJobsByCompetencyIdApi(competencyId?.toString());
-  const { loading: constantsLoading, error: constantsError, data: constants } = useConstantsApi();
-
-  useErrorNotifications(jobsError || constantsError);
-  useIsAppLoading((jobsLoading && !jobs) || (constantsLoading && !constants));
+  const { data: jobs } = useJobsByCompetencyIdApi(competencyId?.toString());
+  const { data: constants } = useConstantsApi();
 
   const jobLevels = constants?.jobLevels;
 
