@@ -1,3 +1,5 @@
+import { ErrorType } from 'global/types';
+
 type ProfileAttributes = {
   title: string;
   subType: string;
@@ -56,7 +58,7 @@ export type JobsTransformed = JobsAttributes & {
 };
 
 export type UseFetchState = {
-  error: any;
+  error: ErrorType | null;
   loading: boolean;
   data: any;
 };

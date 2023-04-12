@@ -25,29 +25,11 @@
         }
       }
     },
-    "profile": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "competencies"
-    },
     "jobs": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::job.job",
-      "mappedBy": "competency"
-    },
-    "tasks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::task.task",
-      "mappedBy": "competency"
-    },
-    "knowledges": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::knowledge.knowledge",
-      "mappedBy": "competency"
+      "mappedBy": "competencies"
     },
     "artefacts": {
       "type": "relation",
@@ -61,9 +43,15 @@
       "target": "api::material.material",
       "mappedBy": "competency"
     },
-    "section": {
+    "profiles": {
       "type": "relation",
-      "relation": "manyToOne",
+      "relation": "manyToMany",
+      "target": "api::profile.profile",
+      "inversedBy": "competencies"
+    },
+    "sections": {
+      "type": "relation",
+      "relation": "manyToMany",
       "target": "api::section.section",
       "inversedBy": "competencies"
     }

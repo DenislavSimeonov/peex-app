@@ -64,33 +64,21 @@
     },
     "sections": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::section.section",
-      "mappedBy": "profile"
+      "mappedBy": "profiles"
     },
     "competencies": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::competency.competency",
-      "mappedBy": "profile"
+      "mappedBy": "profiles"
     },
     "jobs": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::job.job",
-      "mappedBy": "profile"
-    },
-    "tasks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::task.task",
-      "mappedBy": "profile"
-    },
-    "knowledges": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::knowledge.knowledge",
-      "mappedBy": "profile"
+      "mappedBy": "profiles"
     },
     "artefacts": {
       "type": "relation",

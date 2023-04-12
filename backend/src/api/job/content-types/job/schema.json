@@ -35,24 +35,6 @@
         }
       }
     },
-    "competency": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::competency.competency",
-      "inversedBy": "jobs"
-    },
-    "section": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::section.section",
-      "inversedBy": "jobs"
-    },
-    "profile": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "jobs"
-    },
     "level": {
       "type": "enumeration",
       "enum": [
@@ -68,18 +50,6 @@
         }
       }
     },
-    "tasks": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::task.task",
-      "mappedBy": "job"
-    },
-    "knowledges": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::knowledge.knowledge",
-      "mappedBy": "job"
-    },
     "artefacts": {
       "type": "relation",
       "relation": "oneToMany",
@@ -91,6 +61,24 @@
       "relation": "oneToMany",
       "target": "api::material.material",
       "mappedBy": "job"
+    },
+    "profiles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::profile.profile",
+      "inversedBy": "jobs"
+    },
+    "sections": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::section.section",
+      "inversedBy": "jobs"
+    },
+    "competencies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::competency.competency",
+      "inversedBy": "jobs"
     }
   }
 }

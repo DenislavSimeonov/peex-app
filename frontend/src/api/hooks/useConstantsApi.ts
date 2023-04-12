@@ -8,7 +8,7 @@ const useConstantsApi = () => {
     `${process.env.REACT_APP_BACKEND}constant?locale=${settings?.language}`,
   );
 
-  const constants = data?.attributes;
+  const constants: { [key: string]: string } = data?.attributes;
 
   return { loading, error, data: constants };
 };

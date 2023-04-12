@@ -10,7 +10,7 @@ const useSectionsByProfileIdApi = (id?: string) => {
     error,
     data = [],
   } = useFetch(
-    `${process.env.REACT_APP_BACKEND}sections?locale=${settings?.language}&filters[profile][id][$eq]=${id}&populate[0]=profile&populate[1]=competencies`,
+    `${process.env.REACT_APP_BACKEND}sections?locale=${settings?.language}&filters[profiles][id][$contains]=${id}&populate[0]=competencies`,
   );
 
   const sections = data?.map((section: SectionsFromStrapi): SectionsTransformed => {

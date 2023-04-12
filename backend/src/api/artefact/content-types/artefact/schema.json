@@ -22,13 +22,8 @@
         "i18n": {
           "localized": true
         }
-      }
-    },
-    "task": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::task.task",
-      "inversedBy": "artefacts"
+      },
+      "required": true
     },
     "job": {
       "type": "relation",
@@ -60,6 +55,15 @@
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
       "inversedBy": "artefacts"
+    },
+    "Task": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
     }
   }
 }

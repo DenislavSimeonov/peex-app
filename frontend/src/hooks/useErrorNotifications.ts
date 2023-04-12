@@ -1,10 +1,8 @@
 import { useEffect, useContext } from 'react';
 import { AppContext, IAppContext } from 'context/AppContext';
+import { ErrorType } from 'global/types';
 
-type ErrorType = {
-  message?: string;
-} | null;
-const useErrorNotifications = (error?: ErrorType) => {
+const useErrorNotifications = (error?: ErrorType | null) => {
   const { error: errorContext, setError } = useContext(AppContext) as IAppContext;
 
   useEffect(() => {

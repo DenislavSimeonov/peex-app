@@ -24,12 +24,6 @@
         }
       }
     },
-    "knowledge": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::knowledge.knowledge",
-      "inversedBy": "materials"
-    },
     "job": {
       "type": "relation",
       "relation": "manyToOne",

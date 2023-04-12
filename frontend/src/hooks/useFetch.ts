@@ -9,7 +9,7 @@ const useFetch = (url: string) => {
   const [loading, setLoading] = useState(true);
 
   useErrorNotifications(error);
-  useIsAppLoading(loading && !data);
+  useIsAppLoading(loading);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,7 +17,7 @@ const useFetch = (url: string) => {
       setError(null);
 
       // Added for test purposes
-      await new Promise((resolve) => setTimeout(resolve, 500));
+      await new Promise((resolve) => setTimeout(resolve, 300));
 
       fetch(url, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {

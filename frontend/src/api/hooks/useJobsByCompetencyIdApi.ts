@@ -2,26 +2,21 @@ import _ from 'lodash';
 import { useFetch, useSettings } from 'hooks';
 import { JobsFromStrapi, JobsTransformed, UseFetchState } from './types';
 
-const useJobsByCompetencyIdApi = (id?: string) => {
+const useJobsByCompetencyIdApi = (profileId?: string, competencyId?: string) => {
   const { settings } = useSettings();
 
   const { loading, error, data }: UseFetchState = useFetch(
-    `${process.env.REACT_APP_BACKEND}competencies?locale=${settings?.language}&filters[id][$eq]=${id}&populate[0]=jobs`,
+    `${process.env.REACT_APP_BACKEND}jobs?locale=${settings?.language}&filters[profiles][id][$contains]=${profileId}&filters[competencies][id][$contains]=${competencyId}`,
   );
 
-  let jobs = [];
-
-  if (data?.length) {
-    const competenciesData = data[0].attributes.jobs.data;
-    jobs = competenciesData?.map(
-      (competency: JobsFromStrapi): JobsTransformed => ({
-        id: competency.id,
-        title: competency.attributes.title,
-        isKey: competency.attributes.isKey,
-        level: competency.attributes.level,
-      }),
-    );
-  }
+  const jobs = data?.map(
+    (job: JobsFromStrapi): JobsTransformed => ({
+      id: job.id,
+      title: job.attributes.title,
+      isKey: job.attributes.isKey,
+      level: job.attributes.level,
+    }),
+  );
 
   return { loading, error, data: _.sortBy(jobs, ['level', 'title']) };
 };
