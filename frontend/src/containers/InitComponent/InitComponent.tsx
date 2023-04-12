@@ -1,17 +1,24 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import useAuth from 'hooks/useAuth';
+import { useAuth, useErrorNotifications, useIsAppLoading } from 'hooks';
+import AppLoader from 'containers/AppLoader';
 import ProtectedRoute from 'components/ProtectedRoute';
 import AppNavigation from 'containers/AppNavigation';
 import LoginPage from 'containers/LoginPage';
 import PeExProfilesPage from 'containers/PeExProfilesPage';
 import CompetencyPage from 'containers/CompetencyPage';
 import SettingsPage from 'containers/SettingsPage';
+import Notification from 'components/Notification';
+import { NotificationTypes } from 'components/Notification/enums';
 
 const InitComponent = () => {
   const { token } = useAuth();
+  const error = useErrorNotifications();
+  const loading = useIsAppLoading();
 
   return (
     <BrowserRouter>
+      {loading && <AppLoader />}
+      {!!error && <Notification type={NotificationTypes.ERROR} message={`Error: ${error}`} />}
       <AppNavigation />
       <Routes>
         <Route element={<ProtectedRoute isAllowed={!token} redirectPath='/profiles' />}>

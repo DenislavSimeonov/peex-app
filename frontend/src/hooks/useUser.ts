@@ -1,10 +1,10 @@
 import { useContext, useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import useLocalStorage from './useLocalStorage';
 import { UserContext, IUserContext, User } from '../context/UserContext';
 
 const USER = 'user';
 
-export const useUser = () => {
+const useUser = () => {
   const { setItem, getItem, removeItem } = useLocalStorage();
   const { user, setUser } = useContext(UserContext) as IUserContext;
 
@@ -27,3 +27,5 @@ export const useUser = () => {
 
   return { user, addUser, removeUser };
 };
+
+export default useUser;

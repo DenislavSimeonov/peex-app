@@ -1,6 +1,5 @@
 import _ from 'lodash';
-import useFetch from 'hooks/useFetch';
-import { useSettings } from 'hooks/useSettings';
+import { useFetch, useSettings } from 'hooks';
 import { JobsFromStrapi, JobsTransformed, UseFetchState } from './types';
 
 const useJobsByCompetencyIdApi = (id?: string) => {

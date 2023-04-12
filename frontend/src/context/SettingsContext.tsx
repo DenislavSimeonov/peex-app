@@ -1,5 +1,5 @@
 import { createContext, useState, Dispatch, SetStateAction, ReactNode } from 'react';
-import { useLocalStorage } from 'hooks/useLocalStorage';
+import { useLocalStorage } from 'hooks';
 import { SETTINGS_KEY } from 'hooks/useSettings';
 
 export const SETTINGS = {

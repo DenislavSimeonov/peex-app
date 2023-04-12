@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import useAuth from 'hooks/useAuth';
+import { useAuth } from 'hooks';
 import { ErrorType } from 'global/types';
 import { errorMessagesConst } from 'global/constants';
 

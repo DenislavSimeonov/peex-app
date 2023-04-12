@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import useAuth from 'hooks/useAuth';
-import { useUser } from 'hooks/useUser';
+import { useAuth, useUser } from 'hooks';
 import { NAV_ITEMS, SETTINGS } from './constants';
 import Button from 'components/Button';
 import './AppNavigation.scss';

@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useSettings } from 'hooks/useSettings';
+import { useSettings } from 'hooks';
 import Select from 'components/Select/Select';
 import { LANGUAGE_MENU_ITEMS, SETTINGS_OPTIONS } from './constants';
 import './SettingsPage.scss';

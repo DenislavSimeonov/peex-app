@@ -1,6 +1,4 @@
-import _ from 'lodash';
-import useFetch from 'hooks/useFetch';
-import { useSettings } from 'hooks/useSettings';
+import { useFetch, useSettings } from 'hooks';
 import { UseFetchState } from './types';
 
 const useConstantsApi = () => {

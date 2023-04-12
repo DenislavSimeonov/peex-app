@@ -1,9 +1,14 @@
 @use 'global/styles/variables';
 
 .notification {
+  position: fixed;
+  top: variables.$app-navigation-height;
+  left: 0;
   border: 1px solid;
   border-radius: variables.$rounded;
+  margin: variables.$spacing-16;
   padding: variables.$spacing-16 variables.$spacing-16;
+  width: -webkit-fill-available;
 
   &--info {
     border-color: variables.$color-blue-light;

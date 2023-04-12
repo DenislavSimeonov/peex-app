@@ -1,4 +1,3 @@
-import { ButtonVariants } from 'components/Button/enums';
 import SideNavigationItem from './components/SideNavigationItem';
 import './SideNavigation.scss';
 

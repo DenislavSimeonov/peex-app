@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import { useLocalStorage } from './useLocalStorage';
+import useLocalStorage from './useLocalStorage';
 import {
   SettingsType,
   SettingsContext,
@@ -9,7 +9,7 @@ import {
 
 export const SETTINGS_KEY = 'settings';
 
-export const useSettings = () => {
+const useSettings = () => {
   const { getItem, setItem } = useLocalStorage();
   const settingsLs = getItem(SETTINGS_KEY);
   const { settings, setSettings } = useContext(SettingsContext) as ISettingsContext;
@@ -36,3 +36,5 @@ export const useSettings = () => {
 
   return { settings, addSettings, resetSettings };
 };
+
+export default useSettings;

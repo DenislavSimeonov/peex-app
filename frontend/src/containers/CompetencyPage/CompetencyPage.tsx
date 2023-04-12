@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import useSectionsByProfileIdApi from 'api/hooks/useSectionsByProfileIdApi';
+import { useSectionsByProfileIdApi } from 'api/hooks';
+import { useErrorNotifications, useIsAppLoading } from 'hooks';
 import SideNavigation from 'containers/SideNavigation';
 import Jobs from './components/Jobs';
 import './CompetencyPage.scss';
@@ -9,6 +10,9 @@ const CompetencyPage = () => {
   const navigate = useNavigate();
   const { id: profileIdParam, competency_id: competencyId } = useParams();
   const { loading, error, data: sections } = useSectionsByProfileIdApi(profileIdParam);
+
+  useErrorNotifications(error);
+  useIsAppLoading(loading && !sections);
 
   useEffect(() => {
     if (!competencyId && sections?.length) {

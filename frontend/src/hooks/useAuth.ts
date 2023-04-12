@@ -1,6 +1,6 @@
 import { User } from 'context/UserContext';
-import { useUser } from './useUser';
-import { useLocalStorage } from './useLocalStorage';
+import useUser from './useUser';
+import useLocalStorage from './useLocalStorage';
 
 interface ILogin {
   user: User;

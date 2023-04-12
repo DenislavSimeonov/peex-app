@@ -3,7 +3,7 @@
 
 .side-navigation {
   width: 220px;
-  height: calc(100vh - variables.$appNavigationHeight);
+  height: calc(100vh - variables.$app-navigation-height);
   box-sizing: border-box;
   padding: variables.$spacing-2;
   background: variables.$bg-color-side-navigation;
