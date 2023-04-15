@@ -2,7 +2,11 @@ import { useEffect, useState } from 'react';
 import { useAuth, useErrorNotifications, useIsAppLoading } from 'hooks';
 import { ErrorType } from 'global/types';
 
-const useFetch = (url: string) => {
+type Options = {
+  skip?: boolean;
+};
+
+const useFetch = (url: string, options?: Options) => {
   const { token } = useAuth();
   const [data, setData] = useState();
   const [error, setError] = useState<ErrorType | null>(null);
@@ -17,7 +21,7 @@ const useFetch = (url: string) => {
       setError(null);
 
       // Added for test purposes
-      await new Promise((resolve) => setTimeout(resolve, 300));
+      // await new Promise((resolve) => setTimeout(resolve, 300));
 
       fetch(url, { headers: { Authorization: `Bearer ${token}` } })
         .then((response) => {
@@ -31,7 +35,9 @@ const useFetch = (url: string) => {
         .finally(() => setLoading(false));
     };
 
-    fetchData();
+    if (!options?.skip) {
+      fetchData();
+    }
   }, [url, token]);
 
   return { loading, error, data };

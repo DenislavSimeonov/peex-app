@@ -3,10 +3,12 @@ import { useFetch, useSettings } from 'hooks';
 import { JobsFromStrapi, JobsTransformed, UseFetchState } from './types';
 
 const useJobsByCompetencyIdApi = (profileId?: string, competencyId?: string) => {
+  const skip = !profileId || !competencyId;
   const { settings } = useSettings();
 
   const { loading, error, data }: UseFetchState = useFetch(
     `${process.env.REACT_APP_BACKEND}jobs?locale=${settings?.language}&filters[profiles][id][$contains]=${profileId}&filters[competencies][id][$contains]=${competencyId}`,
+    { skip },
   );
 
   const jobs = data?.map(

@@ -3,7 +3,7 @@
 
 .select {
   padding: variables.$spacing-8;
-  border-radius: variables.$rounded;
+  border-radius: variables.$rounded-4;
   @include mixins.button($type: 'primary');
 
   &__option {

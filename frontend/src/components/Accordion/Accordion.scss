@@ -1,0 +1,20 @@
+@use 'global/styles/variables';
+
+.accordion {
+  &__title {
+    padding: variables.$spacing-8 variables.$spacing-8;
+    border-top: 1px solid variables.$color-gray-light;
+    background: variables.$color-white;
+    transition: variables.$transition-background;
+    cursor: pointer;
+
+    &:hover {
+      background: lighten(variables.$color-green-light, 20%);
+    }
+  }
+
+  &__body {
+    padding: variables.$spacing-8;
+    border-top: 1px solid variables.$color-gray-light;
+  }
+}

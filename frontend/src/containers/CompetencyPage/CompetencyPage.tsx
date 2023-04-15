@@ -4,9 +4,11 @@ import { useSectionsByProfileIdApi } from 'api/hooks';
 import SideNavigation from 'containers/SideNavigation';
 import Jobs from './components/Jobs';
 import './CompetencyPage.scss';
+import { useUser } from 'hooks';
 
 const CompetencyPage = () => {
   const navigate = useNavigate();
+  const { user } = useUser();
   const { id: profileId, competency_id: competencyId } = useParams();
   const { data: sections } = useSectionsByProfileIdApi(profileId);
 
@@ -26,7 +28,7 @@ const CompetencyPage = () => {
           navigate(`/competency/${profileId}/${competencyId}`, { replace: true })
         }
       />
-      <Jobs profileId={profileId} competencyId={competencyId} />
+      <Jobs userId={user?.id?.toString()} profileId={profileId} competencyId={competencyId} />
     </div>
   );
 };

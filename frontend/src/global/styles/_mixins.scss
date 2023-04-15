@@ -2,7 +2,7 @@
 
 @mixin card($type: 'primary') {
   background: variables.$color-white;
-  border-radius: variables.$rounded;
+  border-radius: variables.$rounded-4;
 
   @if ($type == 'primary') {
     padding: variables.$spacing-24;
@@ -17,7 +17,7 @@
 @mixin button($type: 'primary') {
   padding: variables.$spacing-8;
   text-decoration: none;
-  border-radius: variables.$rounded;
+  border-radius: variables.$rounded-4;
   cursor: pointer;
   transition: variables.$transition-opacity;
 

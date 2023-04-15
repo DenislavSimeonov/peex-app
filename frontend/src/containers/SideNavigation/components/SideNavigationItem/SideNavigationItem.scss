@@ -2,12 +2,11 @@
 
 .side-navigation__item {
   text-align: left;
-  font-size: variables.$font-size-sm;
   padding: variables.$spacing-8 variables.$spacing-8;
   border-top: 1px solid variables.$color-gray-light;
   border-left: 5px solid variables.$color-white;
   background: variables.$color-white;
-  transition: all 0.2s ease-in-out;
+  transition: variables.$transition-background;
   cursor: pointer;
 
   &:last-child {

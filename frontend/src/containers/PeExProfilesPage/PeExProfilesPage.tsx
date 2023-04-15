@@ -1,13 +1,16 @@
 import { Fragment } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useUser } from 'hooks';
 import { usePeExProfilesApi } from 'api/hooks';
 import Card from 'components/Card';
 import { CardTypes } from 'components/Card/enums';
 import './PeExProfilesPage.scss';
 
 const PeExProfilesPage = () => {
+  const { user } = useUser();
+
   const navigate = useNavigate();
-  const { data: profiles } = usePeExProfilesApi();
+  const { data: profiles } = usePeExProfilesApi(user?.id?.toString());
 
   return (
     <div className='peex-profiles-page'>

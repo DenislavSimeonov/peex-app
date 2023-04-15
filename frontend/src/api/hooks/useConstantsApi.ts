@@ -1,5 +1,5 @@
 import { useFetch, useSettings } from 'hooks';
-import { UseFetchState } from './types';
+import { UseFetchState, useConstantsType } from './types';
 
 const useConstantsApi = () => {
   const { settings } = useSettings();
@@ -8,7 +8,7 @@ const useConstantsApi = () => {
     `${process.env.REACT_APP_BACKEND}constant?locale=${settings?.language}`,
   );
 
-  const constants: { [key: string]: string } = data?.attributes;
+  const constants: useConstantsType = data?.attributes;
 
   return { loading, error, data: constants };
 };

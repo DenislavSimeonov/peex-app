@@ -43,7 +43,7 @@ const AppNavigation = () => {
           <Button
             className='app-navigation__logout-button'
             dataTestId='logout-button'
-            text='Logout'
+            text={`Logout (${user?.name})`}
             handleClick={logout}
           />
         </div>

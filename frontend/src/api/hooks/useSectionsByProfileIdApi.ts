@@ -3,6 +3,7 @@ import { useFetch, useSettings } from 'hooks';
 import { SectionsFromStrapi, SectionsTransformed, CompetenciesFromStrapi } from './types';
 
 const useSectionsByProfileIdApi = (id?: string) => {
+  const skip = !id;
   const { settings } = useSettings();
 
   const {
@@ -11,6 +12,7 @@ const useSectionsByProfileIdApi = (id?: string) => {
     data = [],
   } = useFetch(
     `${process.env.REACT_APP_BACKEND}sections?locale=${settings?.language}&filters[profiles][id][$contains]=${id}&populate[0]=competencies`,
+    { skip },
   );
 
   const sections = data?.map((section: SectionsFromStrapi): SectionsTransformed => {

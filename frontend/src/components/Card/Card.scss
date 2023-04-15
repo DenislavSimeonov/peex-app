@@ -24,7 +24,7 @@
 
   &--animated {
     cursor: pointer;
-    transition: all 0.3s ease-out;
+    transition: all variables.$transition-duration ease-out;
 
     &:hover {
       opacity: 0.8;

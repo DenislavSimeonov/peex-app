@@ -2,7 +2,8 @@
 @use 'global/styles/variables';
 
 .button {
-  font-size: variables.$font-size-md;
+  font-family: 'Roboto', sans-serif;
+  font-size: variables.$font-size-sm;
   font-weight: variables.$font-weight-medium;
 
   &--primary {

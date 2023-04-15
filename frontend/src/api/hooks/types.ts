@@ -57,6 +57,10 @@ export type JobsTransformed = JobsAttributes & {
   id: number;
 };
 
+export type useConstantsType = {
+  [key: string]: any;
+};
+
 export type UseFetchState = {
   error: ErrorType | null;
   loading: boolean;

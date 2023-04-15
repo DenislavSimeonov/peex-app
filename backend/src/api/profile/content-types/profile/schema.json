@@ -91,6 +91,12 @@
       "relation": "oneToMany",
       "target": "api::material.material",
       "mappedBy": "profile"
+    },
+    "users_permissions_users": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "profiles"
     }
   }
 }

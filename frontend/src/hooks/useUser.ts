@@ -10,6 +10,7 @@ const useUser = () => {
 
   useEffect(() => {
     const userLocalStorage = getItem(USER);
+
     if (!user && userLocalStorage) {
       setUser(JSON.parse(userLocalStorage));
     }

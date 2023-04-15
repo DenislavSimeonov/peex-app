@@ -2,8 +2,11 @@
 @use 'global/styles/variables';
 
 .side-navigation {
+  position: sticky;
+  top: 0px;
   width: 220px;
-  height: calc(100vh - variables.$app-navigation-height);
+  min-height: calc(100vh - variables.$app-navigation-height);
+  max-height: 100vh;
   box-sizing: border-box;
   padding: variables.$spacing-2;
   background: variables.$bg-color-side-navigation;

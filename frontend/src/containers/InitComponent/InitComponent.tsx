@@ -1,5 +1,7 @@
+import { useEffect, useContext } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth, useErrorNotifications, useIsAppLoading } from 'hooks';
+import { useAuth, useErrorNotifications, useIsAppLoading, useLocalStorage } from 'hooks';
+import { UserContext, IUserContext } from 'context/UserContext';
 import AppLoader from 'containers/AppLoader';
 import ProtectedRoute from 'components/ProtectedRoute';
 import AppNavigation from 'containers/AppNavigation';
@@ -11,9 +13,20 @@ import Notification from 'components/Notification';
 import { NotificationTypes } from 'components/Notification/enums';
 
 const InitComponent = () => {
+  const USER = 'user';
   const { token } = useAuth();
   const error = useErrorNotifications();
   const loading = useIsAppLoading();
+
+  const { getItem } = useLocalStorage();
+  const { user, setUser } = useContext(UserContext) as IUserContext;
+
+  useEffect(() => {
+    if (!user) {
+      const userLocalStorage = getItem(USER);
+      setUser(JSON.parse(userLocalStorage));
+    }
+  }, []);
 
   return (
     <BrowserRouter>
