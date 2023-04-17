@@ -1,0 +1,15 @@
+@use 'global/styles/variables';
+
+.add-edit-materials__form {
+  .textarea {
+    margin-bottom: variables.$spacing-8;
+  }
+
+  .submit-button__wrapper {
+    text-align: right;
+
+    .button {
+      min-width: 100px;
+    }
+  }
+}

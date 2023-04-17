@@ -19,11 +19,11 @@ const Input = (props: IInput) => {
     props;
 
   return (
-    <label data-testid={`${dataTestId}-input-wrapper`} className='input'>
+    <label data-testid={`${dataTestId}-wrapper`} className='input'>
       <span className='input__label'>{label}</span>
       <input
         data-testid={`${dataTestId}-input`}
-        className={`input__input-field ${fullWidth ? 'input__input-field--full-width' : ''}`}
+        className={`input__field ${fullWidth ? 'input__field--full-width' : ''}`}
         type={type}
         value={value}
         name={name}

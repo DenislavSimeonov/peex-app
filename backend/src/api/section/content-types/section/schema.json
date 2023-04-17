@@ -19,7 +19,7 @@
     "title": {
       "type": "string",
       "required": true,
-      "unique": false,
+      "unique": true,
       "pluginOptions": {
         "i18n": {
           "localized": true

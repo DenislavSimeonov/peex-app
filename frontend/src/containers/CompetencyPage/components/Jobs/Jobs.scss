@@ -11,20 +11,9 @@
       background: variables.$color-gray-ultralight;
       padding: variables.$spacing-2 variables.$spacing-8;
     }
+  }
 
-    &__title {
-      margin: 0 variables.$spacing-8;
-    }
-
-    &__key {
-      display: inline-block;
-      font-weight: variables.$font-weight-medium;
-      font-size: variables.$font-size-xs;
-      background: variables.$color-gray-ultralight;
-      border: 1px solid variables.$color-gray-light;
-      border-radius: variables.$rounded-10;
-      padding: 0 variables.$spacing-4;
-      margin-left: variables.$spacing-4;
-    }
+  .accordion__body {
+    background: variables.$color-green-dark;
   }
 }

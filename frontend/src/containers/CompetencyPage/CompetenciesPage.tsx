@@ -1,35 +1,38 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import { useUser } from 'hooks';
 import { useSectionsByProfileIdApi } from 'api/hooks';
 import SideNavigation from 'containers/SideNavigation';
 import Jobs from './components/Jobs';
-import './CompetencyPage.scss';
-import { useUser } from 'hooks';
+import './CompetenciesPage.scss';
 
-const CompetencyPage = () => {
+const CompetenciesPage = () => {
   const navigate = useNavigate();
   const { user } = useUser();
-  const { id: profileId, competency_id: competencyId } = useParams();
+  const { profileId, competencyId } = useParams();
   const { data: sections } = useSectionsByProfileIdApi(profileId);
 
   useEffect(() => {
     if (!competencyId && sections?.length) {
+      const firstSectionId = sections[0].id;
       const firstCompetencyId = sections[0].competencies[0]?.id;
-      navigate(`/competency/${profileId}/${firstCompetencyId}`, { replace: true });
+      navigate(`/competency/${profileId}/${firstSectionId}/${firstCompetencyId}`, {
+        replace: true,
+      });
     }
   }, [competencyId, sections]);
 
   return (
-    <div className='competency-page' data-testid='competency-page'>
+    <div className='competencies-page' data-testid='competencies-page'>
       <SideNavigation
-        items={sections}
+        sections={sections}
         selectedItemId={Number(competencyId)}
-        handleClick={(competencyId) =>
-          navigate(`/competency/${profileId}/${competencyId}`, { replace: true })
+        handleClick={(sectionId, competencyId) =>
+          navigate(`/competency/${profileId}/${sectionId}/${competencyId}`, { replace: true })
         }
       />
       <Jobs userId={user?.id?.toString()} profileId={profileId} competencyId={competencyId} />
     </div>
   );
 };
-export default CompetencyPage;
+export default CompetenciesPage;

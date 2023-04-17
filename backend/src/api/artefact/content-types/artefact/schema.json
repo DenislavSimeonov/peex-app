@@ -56,7 +56,7 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "artefacts"
     },
-    "Task": {
+    "task": {
       "pluginOptions": {
         "i18n": {
           "localized": true

@@ -1,3 +1,3 @@
-import CompetencyPage from './CompetencyPage';
+import CompetenciesPage from './CompetenciesPage';
 
-export default CompetencyPage;
+export default CompetenciesPage;

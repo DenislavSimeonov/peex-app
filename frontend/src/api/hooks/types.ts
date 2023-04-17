@@ -1,4 +1,4 @@
-import { ErrorType } from 'global/types';
+import { ErrorType, ObjectType } from 'global/types';
 
 type ProfileAttributes = {
   title: string;
@@ -20,6 +20,19 @@ type JobsAttributes = {
   isKey: boolean;
   level: string;
 };
+type ArtefactAttributes = {
+  task: string;
+  artefact: string;
+  job: {
+    data: JobsFromStrapi;
+  };
+};
+type MaterialsAttributes = {
+  materials: string;
+  job: {
+    data: JobsFromStrapi;
+  };
+};
 
 export type ProfileFromStrapi = {
   id: number;
@@ -36,6 +49,14 @@ export type CompetenciesFromStrapi = {
 export type JobsFromStrapi = {
   id: number;
   attributes: JobsAttributes;
+};
+export type ArtefactFromStrapi = {
+  id: number;
+  attributes: ArtefactAttributes;
+};
+export type MaterialsFromStrapi = {
+  id: number;
+  attributes: MaterialsAttributes;
 };
 
 export type ProfileTransformed = ProfileAttributes & {
@@ -56,6 +77,17 @@ export type CompetenciesTransformed = CompetenciesAttributes & {
 export type JobsTransformed = JobsAttributes & {
   id: number;
 };
+export type ArtefactTransformed = {
+  id: number;
+  task: string;
+  artefact: string;
+  jobId: number;
+};
+export type MaterialsTransformed = {
+  id: number;
+  materials: string;
+  jobId: number;
+};
 
 export type useConstantsType = {
   [key: string]: any;
@@ -65,4 +97,12 @@ export type UseFetchState = {
   error: ErrorType | null;
   loading: boolean;
   data: any;
+  forceFetching: () => void;
+};
+
+export type usePostPutState = {
+  error: ErrorType | null;
+  loading: boolean;
+  success: boolean;
+  postPutData: (data: ObjectType) => void;
 };

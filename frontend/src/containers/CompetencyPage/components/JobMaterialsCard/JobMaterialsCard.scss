@@ -1,0 +1,54 @@
+@use 'global/styles/variables';
+
+.job-materials-card {
+  margin-bottom: variables.$spacing-8;
+  padding: variables.$spacing-8;
+  border: 1px solid variables.$color-gray-light;
+  border-radius: variables.$rounded-10;
+  background: variables.$color-gray-ultralight-v2;
+
+  &__title {
+    text-align: center;
+    font-weight: variables.$font-weight-medium;
+    text-transform: uppercase;
+    padding: variables.$spacing-4;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-rows: repeat(max-content);
+    row-gap: variables.$spacing-16;
+  }
+
+  &__item,
+  &__add-item {
+    background: variables.$color-white;
+    border: 1px solid variables.$color-gray-light;
+    border-radius: variables.$rounded-10;
+    padding: variables.$spacing-16;
+
+    &__materials-wrapper {
+      display: grid;
+      grid-template-columns: 1fr max-content;
+    }
+
+    &__materials {
+      font-weight: variables.$font-weight-medium;
+    }
+
+    &__edit-button {
+      color: variables.$color-green-dark;
+      font-weight: variables.$font-weight-medium;
+      margin: 0 variables.$spacing-4;
+      cursor: pointer;
+
+      &:hover {
+        color: lighten(variables.$color-green-dark, 10%);
+      }
+    }
+  }
+
+  &__item {
+    margin-bottom: variables.$spacing-16;
+  }
+}

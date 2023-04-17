@@ -11,26 +11,26 @@ export type SideNavItem = {
   competencies: Competency[];
 };
 
-export interface ISideNavItems {
-  items: SideNavItem[] | undefined;
+export interface ISideNavsections {
+  sections: SideNavItem[] | undefined;
   selectedItemId: number;
-  handleClick: (id: number) => void;
+  handleClick: (sectionId: number, competencyId: number) => void;
 }
 
-const SideNavigation = ({ items, selectedItemId, handleClick }: ISideNavItems) => {
+const SideNavigation = ({ sections, selectedItemId, handleClick }: ISideNavsections) => {
   return (
     <div className='side-navigation'>
-      <div className='side-navigation__items-wrapper'>
-        <div className='side-navigation__items'>
-          {items?.map(({ id, title, competencies }: SideNavItem) => (
-            <div key={`section-${id}`} className='side-navigation__section'>
+      <div className='side-navigation__sections-wrapper'>
+        <div className='side-navigation__sections'>
+          {sections?.map(({ id: sectionId, title, competencies }: SideNavItem) => (
+            <div key={`section-${sectionId}`} className='side-navigation__section'>
               <div className='side-navigation__section__title'>{title}</div>
-              {competencies.map(({ id, title }: Competency) => (
+              {competencies.map(({ id: competencyId, title }: Competency) => (
                 <SideNavigationItem
-                  key={`competencies-${id}`}
+                  key={`competencies-${competencyId}`}
                   title={title}
-                  isActive={id === selectedItemId}
-                  handleClick={() => handleClick(id)}
+                  isActive={competencyId === selectedItemId}
+                  handleClick={() => handleClick(sectionId, competencyId)}
                 />
               ))}
             </div>

@@ -1,6 +1,6 @@
 @use 'global/styles/variables';
 
-.input {
+.textarea {
   display: block;
 
   &__label {
@@ -14,6 +14,8 @@
     padding: variables.$spacing-8;
     font-size: variables.$font-size-md;
     box-sizing: border-box;
+    resize: none;
+    min-height: 100px;
 
     &--full-width {
       width: 100%;

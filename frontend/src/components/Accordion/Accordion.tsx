@@ -41,6 +41,8 @@ const Accordion = ({
 
 Accordion.defaultProps = {
   dataTestId: 'accordion',
+  noDataMessage: '',
+  isNoDataMessageShown: false,
 };
 
 export default Accordion;
