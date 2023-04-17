@@ -44,7 +44,7 @@ const InitComponent = () => {
           path='/competency/*'
           element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}
         >
-          <Route path=':profileId/:sectionId/:competencyId?' element={<CompetencyPage />} />
+          <Route path=':profileId/:sectionId?/:competencyId?' element={<CompetencyPage />} />
         </Route>
         <Route element={<ProtectedRoute isAllowed={!!token} redirectPath='/login' />}>
           <Route path='/settings' element={<SettingsPage />} />
