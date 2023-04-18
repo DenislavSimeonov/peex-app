@@ -40,8 +40,8 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
 
   const jobsByLevel =
     jobLevels &&
-    Object.values(jobLevels)?.map((level) => ({
-      level,
+    Object.entries(jobLevels)?.map(([level, currentLanguageLevel]) => ({
+      level: currentLanguageLevel,
       jobsData: jobs.filter((job) => job.level === level),
     }));
 

@@ -18,7 +18,7 @@ interface IAddEditMaterials {
 }
 
 const AddEditMaterials = ({ initialData, jobId, handleSubmit }: IAddEditMaterials) => {
-  const { success, addEditMaterials } = useAddEditMaterials(initialData?.id);
+  const { success, addEditMaterials } = useAddEditMaterials();
   const { user } = useUser();
   const { profileId, sectionId, competencyId } = useParams();
 

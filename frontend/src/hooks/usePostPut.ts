@@ -3,7 +3,7 @@ import { useAuth, useErrorNotifications, useIsAppLoading } from 'hooks';
 import { ErrorType, ObjectType } from 'global/types';
 import { httpRequestMethods } from 'global/constants';
 
-const usePostPut = (url: string) => {
+const usePostPut = (baseUrl: string, locale: string) => {
   const { token } = useAuth();
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<ErrorType | null>(null);
@@ -18,6 +18,8 @@ const usePostPut = (url: string) => {
     setSuccess(false);
 
     const method = data.id ? httpRequestMethods.PUT : httpRequestMethods.POST;
+    const url = data.id ? `${baseUrl}/${data.id}` : baseUrl;
+    const body = JSON.stringify({ ...data, data: { ...data.data, locale } });
 
     fetch(url, {
       method,
@@ -26,7 +28,7 @@ const usePostPut = (url: string) => {
         Accept: '*/*',
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(data),
+      body,
     })
       .then((response) => {
         if (!response.ok) {

@@ -11,7 +11,7 @@ const usePeExProfilesApi = (userId?: string) => {
     error,
     data = [],
   } = useFetch(
-    `${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}&filters[users_permissions_users][id][$contains]=${userId}`,
+    `${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}&filters[users_permissions_users][id][$eq]=${userId}`,
     { skip },
   );
 

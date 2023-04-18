@@ -1,18 +1,16 @@
 import { usePostPut, useSettings } from 'hooks';
 import { usePostPutState } from './types';
 
-const useAddEditMaterials = (id?: number) => {
+const useAddEditMaterials = () => {
   const { settings } = useSettings();
-  const url = id
-    ? `${process.env.REACT_APP_BACKEND}materials/${id}?locale=${settings?.language}`
-    : `${process.env.REACT_APP_BACKEND}materials?locale=${settings?.language}`;
+  const baseUrl = `${process.env.REACT_APP_BACKEND}materials`;
 
   const {
     loading,
     error,
     success,
     postPutData: addEditMaterials,
-  }: usePostPutState = usePostPut(url);
+  }: usePostPutState = usePostPut(baseUrl, settings?.language);
 
   return { loading, error, success, addEditMaterials };
 };

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { sanitize } from 'dompurify';
 import { ArtefactTransformed } from 'api/hooks/types';
 import NoDataMessage from 'components/NoDataMessage';
 import AddEditArtefact from '../AddEditArtefact';
@@ -54,7 +55,10 @@ const JobArtefactsCard = ({
                       Edit
                     </span>
                   </div>
-                  <div className='job-artefacts-card__item__artefact'>{artefact}</div>
+                  <div
+                    className='job-artefacts-card__item__artefact'
+                    dangerouslySetInnerHTML={{ __html: sanitize(artefact) }}
+                  />
                 </>
               )}
             </div>

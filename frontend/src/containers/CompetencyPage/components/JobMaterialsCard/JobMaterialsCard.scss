@@ -32,10 +32,6 @@
       grid-template-columns: 1fr max-content;
     }
 
-    &__materials {
-      font-weight: variables.$font-weight-medium;
-    }
-
     &__edit-button {
       color: variables.$color-green-dark;
       font-weight: variables.$font-weight-medium;

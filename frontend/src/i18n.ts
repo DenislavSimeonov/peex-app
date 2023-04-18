@@ -15,7 +15,7 @@ i18n
   .use(Backend)
   .use(locizePlugin)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: ['en', 'bg'],
     backend: locizeOptions,
     saveMissing: true,

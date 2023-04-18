@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { sanitize } from 'dompurify';
 import { MaterialsTransformed } from 'api/hooks/types';
 import NoDataMessage from 'components/NoDataMessage';
 import AddEditMaterials from '../AddEditMaterials';
@@ -48,7 +49,10 @@ const JobMaterialsCard = ({
               ) : (
                 <>
                   <div className='job-materials-card__item__materials-wrapper'>
-                    <div className='job-materials-card__item__materials'>{materials}</div>
+                    <div
+                      className='job-materials-card__item__materials'
+                      dangerouslySetInnerHTML={{ __html: sanitize(materials) }}
+                    />
                     <span
                       className='job-materials-card__item__edit-button'
                       onClick={() => setEditMaterialsId(id)}

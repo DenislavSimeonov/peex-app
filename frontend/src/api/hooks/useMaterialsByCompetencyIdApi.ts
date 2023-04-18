@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import { useFetch, useSettings } from 'hooks';
 import { UseFetchState, MaterialsFromStrapi, MaterialsTransformed } from './types';
 

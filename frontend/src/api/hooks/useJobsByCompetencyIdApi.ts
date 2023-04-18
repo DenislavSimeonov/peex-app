@@ -7,7 +7,7 @@ const useJobsByCompetencyIdApi = (profileId?: string, competencyId?: string) => 
   const { settings } = useSettings();
 
   const { loading, error, data }: UseFetchState = useFetch(
-    `${process.env.REACT_APP_BACKEND}jobs?locale=${settings?.language}&filters[profiles][id][$contains]=${profileId}&filters[competencies][id][$contains]=${competencyId}`,
+    `${process.env.REACT_APP_BACKEND}jobs?locale=${settings?.language}&filters[profiles][id][$eq]=${profileId}&filters[competencies][id][$eq]=${competencyId}`,
     { skip },
   );
 

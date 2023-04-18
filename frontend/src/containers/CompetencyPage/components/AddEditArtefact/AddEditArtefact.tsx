@@ -20,7 +20,7 @@ interface IAddEditArtefact {
 }
 
 const AddEditArtefact = ({ initialData, jobId, handleSubmit }: IAddEditArtefact) => {
-  const { success, addEditArtefacts } = useAddEditArtefacts(initialData?.id);
+  const { success, addEditArtefacts } = useAddEditArtefacts();
   const { user } = useUser();
   const { profileId, sectionId, competencyId } = useParams();
 
