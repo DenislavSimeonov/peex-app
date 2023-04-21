@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react';
-import useLocalStorage from './useLocalStorage';
+import { setLocalStorageItem, getLocalStorageItem } from 'global/helpers';
 import {
   SettingsType,
   SettingsContext,
@@ -10,8 +10,7 @@ import {
 export const SETTINGS_KEY = 'settings';
 
 const useSettings = () => {
-  const { getItem, setItem } = useLocalStorage();
-  const settingsLs = getItem(SETTINGS_KEY);
+  const settingsLs = getLocalStorageItem(SETTINGS_KEY);
   const { settings, setSettings } = useContext(SettingsContext) as ISettingsContext;
 
   useEffect(() => {
@@ -26,12 +25,12 @@ const useSettings = () => {
       ...item,
     };
     setSettings(newSettings);
-    setItem(SETTINGS_KEY, newSettings);
+    setLocalStorageItem(SETTINGS_KEY, newSettings);
   };
 
   const resetSettings = () => {
     setSettings(DEFAULT_SETTINGS);
-    setItem(SETTINGS_KEY, DEFAULT_SETTINGS.language);
+    setLocalStorageItem(SETTINGS_KEY, DEFAULT_SETTINGS.language);
   };
 
   return { settings, addSettings, resetSettings };

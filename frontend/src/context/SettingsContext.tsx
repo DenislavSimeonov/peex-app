@@ -1,5 +1,5 @@
 import { createContext, useState, Dispatch, SetStateAction, ReactNode } from 'react';
-import { useLocalStorage } from 'hooks';
+import { getLocalStorageItem } from 'global/helpers';
 import { SETTINGS_KEY } from 'hooks/useSettings';
 
 export const SETTINGS = {
@@ -27,8 +27,7 @@ type SettingsProviderProps = {
 };
 
 export const SettingsContextProvider = ({ children }: SettingsProviderProps) => {
-  const { getItem } = useLocalStorage();
-  const currentSettings = getItem(SETTINGS_KEY);
+  const currentSettings = getLocalStorageItem(SETTINGS_KEY);
   const defaultSettings = currentSettings || DEFAULT_SETTINGS;
   const [settings, setSettings] = useState<SettingsType>(defaultSettings);
 

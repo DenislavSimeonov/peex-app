@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import { render, screen } from 'global/test-utils';
-import { mockI18nDataBySelectedLng } from 'jest-helpers';
+import { mockI18nDataBySelectedLng } from 'global/test-helpers';
 import App from '../App';
 
 describe('App Components', () => {

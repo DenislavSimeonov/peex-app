@@ -1,6 +1,6 @@
 import { User } from 'context/UserContext';
+import { setLocalStorageItem, getLocalStorageItem, removeLocalStorageItem } from 'global/helpers';
 import useUser from './useUser';
-import useLocalStorage from './useLocalStorage';
 
 interface ILogin {
   user: User;
@@ -10,17 +10,16 @@ interface ILogin {
 const TOKEN = 'token';
 
 const useAuth = () => {
-  const { setItem, getItem, removeItem } = useLocalStorage();
-  const token = getItem(TOKEN);
+  const token = getLocalStorageItem(TOKEN);
   const { addUser, removeUser } = useUser();
 
   const login = ({ user, token }: ILogin) => {
-    setItem(TOKEN, token);
+    setLocalStorageItem(TOKEN, token);
     addUser(user);
   };
 
   const logout = () => {
-    removeItem(TOKEN);
+    removeLocalStorageItem(TOKEN);
     removeUser();
   };
 

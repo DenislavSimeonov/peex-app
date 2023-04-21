@@ -1,13 +1,8 @@
 import { useEffect, useContext } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import {
-  useAuth,
-  useErrorNotifications,
-  useIsAppLoading,
-  useLocalStorage,
-  useSettings,
-} from 'hooks';
+import { useAuth, useErrorNotifications, useIsAppLoading, useSettings } from 'hooks';
+import { getLocalStorageItem } from 'global/helpers';
 import { UserContext, IUserContext } from 'context/UserContext';
 import AppLoader from 'containers/AppLoader';
 import ProtectedRoute from 'components/ProtectedRoute';
@@ -25,7 +20,6 @@ const InitComponent = () => {
   const error = useErrorNotifications();
   const loading = useIsAppLoading();
 
-  const { getItem } = useLocalStorage();
   const { user, setUser } = useContext(UserContext) as IUserContext;
 
   const { settings } = useSettings();
@@ -34,7 +28,7 @@ const InitComponent = () => {
 
   useEffect(() => {
     if (!user) {
-      const userLocalStorage = getItem(USER);
+      const userLocalStorage = getLocalStorageItem(USER);
       setUser(JSON.parse(userLocalStorage));
     }
   }, []);
