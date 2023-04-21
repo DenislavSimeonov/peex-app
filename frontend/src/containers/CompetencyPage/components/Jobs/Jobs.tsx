@@ -9,6 +9,7 @@ import { JobsTransformed } from 'api/hooks/types';
 import NoDataMessage from 'components/NoDataMessage';
 import JobsItem from '../JobsItem';
 import './Jobs.scss';
+import { useState } from 'react';
 
 type PropsType = {
   userId?: string;
@@ -23,6 +24,7 @@ type JobByLevel = {
 };
 
 const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
+  const [openJobIdDetails, setOpenJobIdDetails] = useState<number | null>(null);
   const { data: jobs } = useJobsByCompetencyIdApi(profileId, competencyId);
   const { data: artefacts, forceFetching: forceArtefactsFetching } = useArtefactsByCompetencyIdApi(
     userId,
@@ -61,6 +63,8 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
         noMaterialsMessage={messages.missingMaterials}
         forceArtefactsFetching={forceArtefactsFetching}
         forceMaterialsFetching={forceMaterialsFetching}
+        isDetailsAccordionOpen={openJobIdDetails === job.id}
+        setIsDetailsAccordionOpen={(val) => setOpenJobIdDetails(val ? job.id : null)}
       />
     ));
   };

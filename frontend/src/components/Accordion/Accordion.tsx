@@ -1,40 +1,61 @@
 import { ReactNode, useState } from 'react';
 import AnimateHeight from 'react-animate-height';
 import NoDataMessage from 'components/NoDataMessage';
+import AnchorLink from 'components/AnchorLink';
 import './Accordion.scss';
 
 interface IAccordion {
   title: string | ReactNode;
   children: ReactNode;
+  anchorLinkId?: string;
   dataTestId: string;
   noDataMessage: string;
   isNoDataMessageShown: boolean;
+  isOpenExternal?: boolean;
+  setIsOpenExternal?: (val: boolean) => void;
 }
 
 const Accordion = ({
   dataTestId,
   title,
   children,
+  anchorLinkId,
   noDataMessage,
   isNoDataMessageShown,
+  isOpenExternal,
+  setIsOpenExternal,
 }: IAccordion) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const handleToggle = () => setIsOpen((state) => !state);
+  const animationDuration = 500;
+  const scrollDelay = 530;
+  const [isOpenInternal, setIsOpenInternal] = useState(false);
+  const handleToggle = () =>
+    setIsOpenExternal ? setIsOpenExternal(!isOpenExternal) : setIsOpenInternal((state) => !state);
+
+  const isOpen = setIsOpenExternal ? isOpenExternal : isOpenInternal;
 
   return (
     <div className='accordion' data-testid={dataTestId}>
-      <div className='accordion__title' data-testid={`${dataTestId}-title`} onClick={handleToggle}>
-        {title}
-      </div>
-      <AnimateHeight duration={500} height={isOpen ? 'auto' : 0}>
-        {!isNoDataMessageShown ? (
-          <div className='accordion__body' data-testid={`${dataTestId}-body`}>
-            {children}
+      <section id={anchorLinkId}>
+        <AnchorLink id={anchorLinkId} scrollDelay={scrollDelay}>
+          <div
+            className='accordion__title'
+            data-testid={`${dataTestId}-title`}
+            onClick={handleToggle}
+          >
+            {title}
           </div>
-        ) : (
-          <NoDataMessage message={noDataMessage} borders={['top']} />
-        )}
-      </AnimateHeight>
+        </AnchorLink>
+
+        <AnimateHeight duration={animationDuration} height={isOpen ? 'auto' : 0}>
+          {!isNoDataMessageShown ? (
+            <div className='accordion__body' data-testid={`${dataTestId}-body`}>
+              {children}
+            </div>
+          ) : (
+            <NoDataMessage message={noDataMessage} borders={['top']} />
+          )}
+        </AnimateHeight>
+      </section>
     </div>
   );
 };

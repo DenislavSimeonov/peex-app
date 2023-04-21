@@ -23,11 +23,11 @@ const SideNavigation = ({ sections, selectedItemId, handleClick }: ISideNavsecti
       <div className='side-navigation__sections-wrapper'>
         <div className='side-navigation__sections'>
           {sections?.map(({ id: sectionId, title, competencies }: SideNavItem) => (
-            <div key={`section-${sectionId}`} className='side-navigation__section'>
+            <div key={sectionId} className='side-navigation__section'>
               <div className='side-navigation__section__title'>{title}</div>
               {competencies.map(({ id: competencyId, title }: Competency) => (
                 <SideNavigationItem
-                  key={`competencies-${competencyId}`}
+                  key={competencyId}
                   title={title}
                   isActive={competencyId === selectedItemId}
                   handleClick={() => handleClick(sectionId, competencyId)}

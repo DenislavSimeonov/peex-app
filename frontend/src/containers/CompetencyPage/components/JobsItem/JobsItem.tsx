@@ -16,6 +16,8 @@ interface IJobsItem {
   noMaterialsMessage: string;
   forceArtefactsFetching: () => void;
   forceMaterialsFetching: () => void;
+  isDetailsAccordionOpen: boolean;
+  setIsDetailsAccordionOpen: (val: boolean) => void;
 }
 
 const JobsItem = ({
@@ -24,16 +26,21 @@ const JobsItem = ({
   noMaterialsMessage,
   forceArtefactsFetching,
   forceMaterialsFetching,
+  isDetailsAccordionOpen,
+  setIsDetailsAccordionOpen,
 }: IJobsItem) => {
   return (
     <Accordion
       key={data.id}
+      anchorLinkId={`job-${data.id}-${data.level}`}
       title={
         <>
           <span className='jobs-item__title'>{data.title}</span>
           {data.isKey && <span className='jobs-item__key'>KEY</span>}
         </>
       }
+      isOpenExternal={isDetailsAccordionOpen}
+      setIsOpenExternal={setIsDetailsAccordionOpen}
     >
       <JobArtefactsCard
         jobId={data.id}
