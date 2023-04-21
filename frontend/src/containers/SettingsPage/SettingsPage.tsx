@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect } from 'react';
+import { ChangeEvent } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useSettings } from 'hooks';
 import Select from 'components/Select/Select';
@@ -10,9 +10,6 @@ const SettingsPage = () => {
   const { i18n } = useTranslation();
 
   const changeI18nLanguage = (val: string) => i18n.changeLanguage(val);
-  useEffect(() => {
-    changeI18nLanguage(settings.language);
-  }, []);
 
   const handleLanguageChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const language = e.target.value;

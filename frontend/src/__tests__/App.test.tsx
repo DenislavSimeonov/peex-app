@@ -1,34 +1,35 @@
-import { render } from 'global/test-utils';
+import _ from 'lodash';
+import { render, screen } from 'global/test-utils';
 import { mockI18nDataBySelectedLng } from 'jest-helpers';
 import App from '../App';
 
 describe('App Components', () => {
-  let currentLanguage = 'en';
+  const setUser = () => {
+    const userData = JSON.stringify('{"id":1,"name":"username"}');
+    window.localStorage.setItem('user', userData);
+  };
 
-  beforeEach(() => {
-    currentLanguage = 'en';
+  afterEach(() => {
+    window.localStorage.clear();
   });
 
   it('should render correct content when selected language is "en"', () => {
-    mockI18nDataBySelectedLng(currentLanguage);
-    const { container } = render(<App />);
+    mockI18nDataBySelectedLng('en');
+    setUser();
+    render(<App />);
 
-    expect(container).toHaveTextContent('Home');
-    expect(container).toHaveTextContent('Page one');
-    expect(container).toHaveTextContent('Page two');
-    expect(container).toHaveTextContent('EN');
-    expect(container).toHaveTextContent('BG');
+    expect(screen.getByTestId('app-navigation-profiles')).toHaveTextContent('My PeEx Profiles');
+    expect(screen.getByTestId('app-navigation-settings-button')).toHaveTextContent('Settings');
+    expect(screen.getByTestId('logout-button')).toHaveTextContent('Logout (username)');
   });
 
   it('should render correct content when selected language is "bg"', () => {
-    currentLanguage = 'bg';
-    mockI18nDataBySelectedLng(currentLanguage);
-    const { container } = render(<App />);
+    mockI18nDataBySelectedLng('bg');
+    setUser();
+    render(<App />);
 
-    expect(container).toHaveTextContent('Начална страница');
-    expect(container).toHaveTextContent('Страница 1');
-    expect(container).toHaveTextContent('Cтраница 2');
-    expect(container).toHaveTextContent('EN');
-    expect(container).toHaveTextContent('BG');
+    expect(screen.getByTestId('app-navigation-profiles')).toHaveTextContent('Моите PeEx профили');
+    expect(screen.getByTestId('app-navigation-settings-button')).toHaveTextContent('Настройки');
+    expect(screen.getByTestId('logout-button')).toHaveTextContent('Отписване (username)');
   });
 });

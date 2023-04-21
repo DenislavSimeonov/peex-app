@@ -8,7 +8,9 @@ jest.mock('react-i18next');
 export const mockI18nDataBySelectedLng = (currentLanguage: string) => {
   const locationData = currentLanguage === 'en' ? enLocation : bgLocation;
   (i18n.useTranslation as jest.Mock).mockReturnValue({
-    i18n: currentLanguage,
+    i18n: {
+      changeLanguage: jest.fn(),
+    },
     t: (key: string) => _.get(locationData, key),
   });
 };

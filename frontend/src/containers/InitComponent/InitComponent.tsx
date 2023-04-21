@@ -1,6 +1,13 @@
 import { useEffect, useContext } from 'react';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { useAuth, useErrorNotifications, useIsAppLoading, useLocalStorage } from 'hooks';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import {
+  useAuth,
+  useErrorNotifications,
+  useIsAppLoading,
+  useLocalStorage,
+  useSettings,
+} from 'hooks';
 import { UserContext, IUserContext } from 'context/UserContext';
 import AppLoader from 'containers/AppLoader';
 import ProtectedRoute from 'components/ProtectedRoute';
@@ -21,6 +28,10 @@ const InitComponent = () => {
   const { getItem } = useLocalStorage();
   const { user, setUser } = useContext(UserContext) as IUserContext;
 
+  const { settings } = useSettings();
+  const { i18n } = useTranslation();
+  const changeI18nLanguage = (val: string) => i18n.changeLanguage(val);
+
   useEffect(() => {
     if (!user) {
       const userLocalStorage = getItem(USER);
@@ -28,8 +39,12 @@ const InitComponent = () => {
     }
   }, []);
 
+  useEffect(() => {
+    changeI18nLanguage(settings.language);
+  }, []);
+
   return (
-    <BrowserRouter>
+    <>
       {loading && <AppLoader />}
       {!!error && <Notification type={NotificationTypes.ERROR} message={`Error: ${error}`} />}
       <AppNavigation />
@@ -51,7 +66,7 @@ const InitComponent = () => {
         </Route>
         <Route path='*' element={<Navigate to='/profiles' replace />} />
       </Routes>
-    </BrowserRouter>
+    </>
   );
 };
 
