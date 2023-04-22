@@ -17,8 +17,8 @@ describe('App Components', () => {
     setUser();
     render(<App />);
 
-    expect(screen.getByTestId('app-navigation-profiles')).toHaveTextContent('My PeEx Profiles');
-    expect(screen.getByTestId('app-navigation-settings-button')).toHaveTextContent('Settings');
+    expect(screen.getByTestId('app-header-profiles')).toHaveTextContent('My PeEx Profiles');
+    expect(screen.getByTestId('app-header-settings-button')).toHaveTextContent('Settings');
     expect(screen.getByTestId('logout-button')).toHaveTextContent('Logout (username)');
   });
 
@@ -27,8 +27,8 @@ describe('App Components', () => {
     setUser();
     render(<App />);
 
-    expect(screen.getByTestId('app-navigation-profiles')).toHaveTextContent('Моите PeEx профили');
-    expect(screen.getByTestId('app-navigation-settings-button')).toHaveTextContent('Настройки');
+    expect(screen.getByTestId('app-header-profiles')).toHaveTextContent('Моите PeEx профили');
+    expect(screen.getByTestId('app-header-settings-button')).toHaveTextContent('Настройки');
     expect(screen.getByTestId('logout-button')).toHaveTextContent('Отписване (username)');
   });
 });
