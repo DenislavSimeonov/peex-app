@@ -27,11 +27,11 @@ const InitComponent = () => {
   const changeI18nLanguage = (val: string) => i18n.changeLanguage(val);
 
   useEffect(() => {
-    if (!user) {
+    if (token && !user) {
       const userLocalStorage = getLocalStorageItem(USER);
       setUser(JSON.parse(userLocalStorage));
     }
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     changeI18nLanguage(settings.language);

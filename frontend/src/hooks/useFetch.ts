@@ -22,7 +22,12 @@ const useFetch = (url: string, options?: Options) => {
     // Added for test purposes
     await new Promise((resolve) => setTimeout(resolve, 300));
 
-    fetch(url, { headers: { Authorization: `Bearer ${token}` } })
+    const headers = {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token}`,
+    };
+
+    fetch(url, { headers })
       .then((response) => {
         if (!response.ok) {
           throw Error(response.statusText);

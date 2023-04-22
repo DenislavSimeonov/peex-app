@@ -17,16 +17,13 @@ const useLogin = () => {
     setLoading(true);
     setError(null);
 
-    fetch(`${process.env.REACT_APP_BACKEND}auth/local`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        identifier: username,
-        password: password,
-      }),
-    })
+    const headers = { 'Content-Type': 'application/json' };
+    const body = JSON.stringify({
+      identifier: username,
+      password: password,
+    });
+
+    fetch(`${process.env.REACT_APP_BACKEND}auth/local`, { method: 'POST', headers, body })
       .then((response) => {
         if (!response.ok) {
           throw Error(errorMessagesConst.LOGIN_ERROR);
