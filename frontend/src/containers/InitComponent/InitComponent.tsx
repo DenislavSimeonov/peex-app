@@ -1,5 +1,5 @@
 import { useEffect, useContext } from 'react';
-import { Routes, Route, Navigate, useRoutes } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useErrorNotifications, useIsAppLoading, useSettings } from 'hooks';
 import { getLocalStorageItem } from 'global/helpers';
@@ -36,8 +36,6 @@ const InitComponent = () => {
   useEffect(() => {
     changeI18nLanguage(settings.language);
   }, []);
-
-  const routes = useRoutes([{}]);
 
   return (
     <>
