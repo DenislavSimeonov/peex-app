@@ -47,4 +47,10 @@
   &__item {
     margin-bottom: variables.$spacing-16;
   }
+
+  &__item__materials {
+    li {
+      padding: variables.$spacing-4 0;
+    }
+  }
 }
