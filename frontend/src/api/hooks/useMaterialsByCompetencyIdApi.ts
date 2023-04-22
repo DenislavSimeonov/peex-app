@@ -8,11 +8,9 @@ const useMaterialsByCompetencyIdApi = (
 ) => {
   const { settings } = useSettings();
   const skip = !userId || !profileId || !competencyId;
+  const url = `${process.env.REACT_APP_BACKEND}materials?locale=${settings?.language}&filters[users_permissions_user][id][$eq]=${userId}&filters[profile][id][$eq]=${profileId}&filters[competency][id][$eq]=${competencyId}&populate[0]=job`;
 
-  const { loading, error, data, forceFetching }: UseFetchState = useFetch(
-    `${process.env.REACT_APP_BACKEND}materials?locale=${settings?.language}&filters[users_permissions_user][id][$eq]=${userId}&filters[profile][id][$eq]=${profileId}&filters[competency][id][$eq]=${competencyId}&populate[0]=job`,
-    { skip },
-  );
+  const { loading, error, data, forceFetching }: UseFetchState = useFetch(url, { skip });
 
   const materials = data?.map((materials: MaterialsFromStrapi): MaterialsTransformed => {
     return {

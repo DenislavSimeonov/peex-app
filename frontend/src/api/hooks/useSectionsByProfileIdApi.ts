@@ -5,15 +5,9 @@ import { SectionsFromStrapi, SectionsTransformed, CompetenciesFromStrapi } from 
 const useSectionsByProfileIdApi = (id?: string) => {
   const skip = !id;
   const { settings } = useSettings();
+  const url = `${process.env.REACT_APP_BACKEND}sections?locale=${settings?.language}&filters[profiles][id][$eq]=${id}&populate[0]=competencies`;
 
-  const {
-    loading,
-    error,
-    data = [],
-  } = useFetch(
-    `${process.env.REACT_APP_BACKEND}sections?locale=${settings?.language}&filters[profiles][id][$eq]=${id}&populate[0]=competencies`,
-    { skip },
-  );
+  const { loading, error, data = [] } = useFetch(url, { skip });
 
   const sections = data?.map((section: SectionsFromStrapi): SectionsTransformed => {
     const competencies = section.attributes.competencies.data.map(

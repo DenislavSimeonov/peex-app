@@ -5,11 +5,9 @@ import { JobsFromStrapi, JobsTransformed, UseFetchState } from './types';
 const useJobsByCompetencyIdApi = (profileId?: string, competencyId?: string) => {
   const skip = !profileId || !competencyId;
   const { settings } = useSettings();
+  const url = `${process.env.REACT_APP_BACKEND}jobs?locale=${settings?.language}&filters[profiles][id][$eq]=${profileId}&filters[competencies][id][$eq]=${competencyId}`;
 
-  const { loading, error, data }: UseFetchState = useFetch(
-    `${process.env.REACT_APP_BACKEND}jobs?locale=${settings?.language}&filters[profiles][id][$eq]=${profileId}&filters[competencies][id][$eq]=${competencyId}`,
-    { skip },
-  );
+  const { loading, error, data }: UseFetchState = useFetch(url, { skip });
 
   const jobs = data?.map(
     (job: JobsFromStrapi): JobsTransformed => ({

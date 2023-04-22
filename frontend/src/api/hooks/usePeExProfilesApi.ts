@@ -5,15 +5,9 @@ import { ProfileFromStrapi, ProfileTransformed } from './types';
 const usePeExProfilesApi = (userId?: string) => {
   const skip = !userId;
   const { settings } = useSettings();
+  const url = `${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}&filters[users_permissions_users][id][$eq]=${userId}`;
 
-  const {
-    loading,
-    error,
-    data = [],
-  } = useFetch(
-    `${process.env.REACT_APP_BACKEND}profiles?locale=${settings?.language}&filters[users_permissions_users][id][$eq]=${userId}`,
-    { skip },
-  );
+  const { loading, error, data = [] } = useFetch(url, { skip });
 
   const profiles = data?.map(
     (profile: ProfileFromStrapi): ProfileTransformed => ({
