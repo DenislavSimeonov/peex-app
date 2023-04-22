@@ -19,9 +19,9 @@ export interface ISideNavsections {
 
 const SideNavigation = ({ sections, selectedItemId, handleClick }: ISideNavsections) => {
   return (
-    <div className='side-navigation'>
+    <aside className='side-navigation'>
       <div className='side-navigation__sections-wrapper'>
-        <div className='side-navigation__sections'>
+        <section className='side-navigation__sections'>
           {sections?.map(({ id: sectionId, title, competencies }: SideNavItem) => (
             <div key={sectionId} className='side-navigation__section'>
               <div className='side-navigation__section__title'>{title}</div>
@@ -35,9 +35,9 @@ const SideNavigation = ({ sections, selectedItemId, handleClick }: ISideNavsecti
               ))}
             </div>
           ))}
-        </div>
+        </section>
       </div>
-    </div>
+    </aside>
   );
 };
 

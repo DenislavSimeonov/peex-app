@@ -21,7 +21,7 @@ const SettingsPage = () => {
     <div className='settings-page' data-testid='settings-page'>
       <label className='settings-page__label'>{SETTINGS_OPTIONS.languages}</label>
       <Select
-        dataTestId='app-navigation-language-select'
+        dataTestId='app-header-language-select'
         value={settings?.language}
         options={LANGUAGE_MENU_ITEMS}
         handleChange={handleLanguageChange}

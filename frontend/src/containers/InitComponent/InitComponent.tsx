@@ -1,12 +1,12 @@
 import { useEffect, useContext } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, useRoutes } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { useAuth, useErrorNotifications, useIsAppLoading, useSettings } from 'hooks';
 import { getLocalStorageItem } from 'global/helpers';
 import { UserContext, IUserContext } from 'context/UserContext';
 import AppLoader from 'containers/AppLoader';
 import ProtectedRoute from 'components/ProtectedRoute';
-import AppNavigation from 'containers/AppNavigation';
+import AppHeader from 'containers/AppHeader';
 import LoginPage from 'containers/LoginPage';
 import PeExProfilesPage from 'containers/PeExProfilesPage';
 import CompetencyPage from 'containers/CompetencyPage';
@@ -37,11 +37,13 @@ const InitComponent = () => {
     changeI18nLanguage(settings.language);
   }, []);
 
+  const routes = useRoutes([{}]);
+
   return (
     <>
       {loading && <AppLoader />}
       {!!error && <Notification type={NotificationTypes.ERROR} message={`Error: ${error}`} />}
-      <AppNavigation />
+      <AppHeader />
       <Routes>
         <Route element={<ProtectedRoute isAllowed={!token} redirectPath='/profiles' />}>
           <Route path='/login' element={<LoginPage />} />
