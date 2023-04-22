@@ -31,6 +31,7 @@ const JobsItem = ({
 }: IJobsItem) => {
   return (
     <Accordion
+      className='jobs-item__accordion'
       key={data.id}
       anchorLinkId={`job-${data.id}-${data.level}`}
       title={

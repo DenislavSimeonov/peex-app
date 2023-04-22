@@ -3,14 +3,12 @@
 .jobs {
   width: 100%;
 
-  .job {
-    &__level {
-      font-weight: variables.$font-weight-medium;
-      text-transform: uppercase;
-      border-top: 1px solid variables.$color-gray-light;
-      background: variables.$color-gray-ultralight;
-      padding: variables.$spacing-2 variables.$spacing-8;
-    }
+  &__level {
+    font-weight: variables.$font-weight-medium;
+    text-transform: uppercase;
+    border-top: 1px solid variables.$color-gray-light;
+    background: variables.$color-gray-ultralight;
+    padding: variables.$spacing-2 variables.$spacing-8;
   }
 
   .accordion__body {

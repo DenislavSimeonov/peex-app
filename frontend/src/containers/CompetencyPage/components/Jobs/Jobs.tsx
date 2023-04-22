@@ -73,8 +73,8 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
     <div className='jobs' data-testid='jobs'>
       {jobsByLevel &&
         jobsByLevel?.map(({ level, jobsData }: JobByLevel) => (
-          <div key={level} className='job'>
-            <div className='job__level' data-testid={`job-level-${level}`}>
+          <div key={level} className='jobs__section'>
+            <div className='jobs__level' data-testid={`jobs-level-${level}`}>
               {level}
             </div>
             {renderJobs(jobsData)}
