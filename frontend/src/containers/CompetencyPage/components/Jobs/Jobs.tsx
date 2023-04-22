@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import { useEffect, useState } from 'react';
 import {
   useJobsByCompetencyIdApi,
   useArtefactsByCompetencyIdApi,
@@ -6,10 +7,10 @@ import {
   useConstantsApi,
 } from 'api/hooks';
 import { JobsTransformed } from 'api/hooks/types';
+import { subscribe, unsubscribe } from 'global/events';
 import NoDataMessage from 'components/NoDataMessage';
 import JobsItem from '../JobsItem';
 import './Jobs.scss';
-import { useState } from 'react';
 
 type PropsType = {
   userId?: string;
@@ -47,6 +48,14 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
       jobsData: jobs.filter((job) => job.level === level),
     }));
 
+  useEffect(() => {
+    subscribe('toggleJobAccordion', ({ detail }) =>
+      setOpenJobIdDetails(detail.val ? detail.id : null),
+    );
+
+    return () => unsubscribe('toggleJobAccordion', (data) => console.log(data));
+  }, []);
+
   const renderJobs = (data: JobsTransformed[]) => {
     if (!data.length) {
       return <NoDataMessage message={messages?.missingJobs} borders={['top']} />;
@@ -64,7 +73,7 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
         forceArtefactsFetching={forceArtefactsFetching}
         forceMaterialsFetching={forceMaterialsFetching}
         isDetailsAccordionOpen={openJobIdDetails === job.id}
-        setIsDetailsAccordionOpen={(val) => setOpenJobIdDetails(val ? job.id : null)}
+        // setIsDetailsAccordionOpen={(val) => setOpenJobIdDetails(val ? job.id : null)}
       />
     ));
   };

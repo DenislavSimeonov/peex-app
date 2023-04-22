@@ -1,6 +1,7 @@
 import { memo } from 'react';
 import { JobsTransformed, ArtefactTransformed, MaterialsTransformed } from 'api/hooks/types';
 import Accordion from 'components/Accordion';
+import { publish } from 'global/events';
 import JobArtefactsCard from '../JobArtefactsCard';
 import JobMaterialsCard from '../JobMaterialsCard';
 import './JobsItem.scss';
@@ -17,7 +18,7 @@ interface IJobsItem {
   forceArtefactsFetching: () => void;
   forceMaterialsFetching: () => void;
   isDetailsAccordionOpen: boolean;
-  setIsDetailsAccordionOpen: (val: boolean) => void;
+  // setIsDetailsAccordionOpen: (val: boolean) => void;
 }
 
 const JobsItem = ({
@@ -26,8 +27,8 @@ const JobsItem = ({
   noMaterialsMessage,
   forceArtefactsFetching,
   forceMaterialsFetching,
+  // setIsDetailsAccordionOpen,
   isDetailsAccordionOpen,
-  setIsDetailsAccordionOpen,
 }: IJobsItem) => {
   return (
     <Accordion
@@ -41,7 +42,10 @@ const JobsItem = ({
         </>
       }
       isOpenExternal={isDetailsAccordionOpen}
-      setIsOpenExternal={setIsDetailsAccordionOpen}
+      setIsOpenExternal={(val) => {
+        publish('toggleJobAccordion', { id: data.id, val });
+        // setIsDetailsAccordionOpen(val);
+      }}
     >
       <JobArtefactsCard
         jobId={data.id}

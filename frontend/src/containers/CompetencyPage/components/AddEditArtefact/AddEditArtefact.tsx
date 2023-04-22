@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, SyntheticEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { useAddEditArtefacts } from 'api/hooks';
 import { useUser } from 'hooks';
@@ -33,7 +33,7 @@ const AddEditArtefact = ({ initialData, jobId, handleSubmit }: IAddEditArtefact)
     }
   }, [success]);
 
-  const onSubmit = async (e: React.SyntheticEvent) => {
+  const onSubmit = async (e: SyntheticEvent) => {
     e.preventDefault();
     const data = {
       id: initialData?.id,
