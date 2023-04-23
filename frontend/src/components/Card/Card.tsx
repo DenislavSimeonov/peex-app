@@ -1,19 +1,29 @@
 import { ReactNode } from 'react';
+import { CardTypes } from './enums';
 import './Card.scss';
 
-type CardTypes = 'primary' | 'secondary';
-
-interface Props {
+interface IProps {
+  dataTestId: string;
   type: CardTypes;
   title?: string;
-  children: ReactNode;
+  children?: ReactNode;
+  hoverEffect: boolean;
+  handleClick?: () => void;
 }
 
-const Card = ({ type, title, children }: Props) => (
-  <div className={`card--${type}`}>
+const Card = ({ dataTestId, type, title, children, hoverEffect, handleClick }: IProps) => (
+  <div
+    className={`card card--${type} ${hoverEffect ? 'card--animated' : ''}`}
+    data-testif={dataTestId}
+    onClick={handleClick}
+  >
     <div className='card__title'>{title}</div>
     {children}
   </div>
 );
 
+Card.defaultProps = {
+  dataTestId: 'card',
+  hoverEffect: false,
+};
 export default Card;

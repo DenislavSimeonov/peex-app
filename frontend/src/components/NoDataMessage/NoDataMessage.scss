@@ -1,0 +1,22 @@
+@use 'global/styles/variables';
+
+.no-data-message {
+  text-align: center;
+  padding: variables.$spacing-8;
+
+  &--border-top {
+    border-top: 1px solid variables.$color-gray-light;
+  }
+
+  &--border-left {
+    border-left: 1px solid variables.$color-gray-light;
+  }
+
+  &--border-bottom {
+    border-bottom: 1px solid variables.$color-gray-light;
+  }
+
+  &--border-right {
+    border-right: 1px solid variables.$color-gray-light;
+  }
+}

@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "artefacts",
+  "info": {
+    "singularName": "artefact",
+    "pluralName": "artefacts",
+    "displayName": "Artefact",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "artefact": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "job": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::job.job",
+      "inversedBy": "artefacts"
+    },
+    "section": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::section.section",
+      "private": true,
+      "inversedBy": "artefacts"
+    },
+    "competency": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::competency.competency",
+      "inversedBy": "artefacts"
+    },
+    "profile": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::profile.profile",
+      "inversedBy": "artefacts"
+    },
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "artefacts"
+    },
+    "task": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "string",
+      "required": true
+    }
+  }
+}

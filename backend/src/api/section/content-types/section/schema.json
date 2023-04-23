@@ -10,30 +10,51 @@
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
   "attributes": {
     "title": {
       "type": "string",
       "required": true,
-      "unique": true
-    },
-    "competencies": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::competency.competency",
-      "mappedBy": "section"
-    },
-    "profile": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::profile.profile",
-      "inversedBy": "sections"
+      "unique": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "jobs": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "manyToMany",
       "target": "api::job.job",
+      "mappedBy": "sections"
+    },
+    "artefacts": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::artefact.artefact",
       "mappedBy": "section"
+    },
+    "materials": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::material.material",
+      "mappedBy": "section"
+    },
+    "competencies": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::competency.competency",
+      "mappedBy": "sections"
+    },
+    "profiles": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::profile.profile",
+      "inversedBy": "sections"
     }
   }
 }

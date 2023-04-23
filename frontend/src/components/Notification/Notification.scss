@@ -1,0 +1,29 @@
+@use 'global/styles/variables';
+
+.notification {
+  position: fixed;
+  z-index: 99;
+  top: variables.$app-header-height;
+  left: 0;
+  border: 1px solid;
+  border-radius: variables.$rounded-4;
+  margin: variables.$spacing-16;
+  padding: variables.$spacing-16 variables.$spacing-16;
+  width: -webkit-fill-available;
+
+  &--info {
+    border-color: variables.$color-blue-light;
+    color: variables.$color-blue-light;
+  }
+
+  &--success {
+    border-color: variables.$color-gray-light;
+    color: variables.$color-gray-light;
+  }
+
+  &--error {
+    border-color: variables.$color-red-dark;
+    background: variables.$color-error-background;
+    color: variables.$color-red-dark;
+  }
+}

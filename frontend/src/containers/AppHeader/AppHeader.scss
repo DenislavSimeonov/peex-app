@@ -1,0 +1,28 @@
+@use 'global/styles/mixins';
+@use 'global/styles/variables';
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: variables.$color-green-light;
+  border-bottom: 1px solid variables.$color-black;
+  padding: variables.$spacing-16;
+  height: variables.$app-header-height;
+  box-sizing: border-box;
+
+  &__nav {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    column-gap: variables.$spacing-8;
+  }
+
+  &__nav__item,
+  &__settings-button {
+    @include mixins.button($type: 'primary');
+  }
+
+  &__logout-button {
+    margin-left: 20px;
+  }
+}

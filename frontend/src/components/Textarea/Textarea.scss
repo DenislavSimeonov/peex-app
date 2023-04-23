@@ -1,0 +1,24 @@
+@use 'global/styles/variables';
+
+.textarea {
+  display: block;
+
+  &__label {
+    display: block;
+    font-weight: variables.$font-weight-medium;
+    margin-bottom: variables.$spacing-2;
+  }
+
+  &__field {
+    display: block;
+    padding: variables.$spacing-8;
+    font-size: variables.$font-size-md;
+    box-sizing: border-box;
+    resize: vertical;
+    min-height: 200px;
+
+    &--full-width {
+      width: 100%;
+    }
+  }
+}

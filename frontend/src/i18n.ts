@@ -10,11 +10,15 @@ const locizeOptions = {
   version: process.env.REACT_APP_LOCIZE_VERTSION,
 };
 
-i18n.use(initReactI18next).use(Backend).use(locizePlugin).init({
-  debug: true,
-  fallbackLng: 'en',
-  backend: locizeOptions,
-  saveMissing: true,
-});
+i18n
+  .use(initReactI18next)
+  .use(Backend)
+  .use(locizePlugin)
+  .init({
+    debug: false,
+    fallbackLng: ['en', 'bg'],
+    backend: locizeOptions,
+    saveMissing: true,
+  });
 
 export default i18n;

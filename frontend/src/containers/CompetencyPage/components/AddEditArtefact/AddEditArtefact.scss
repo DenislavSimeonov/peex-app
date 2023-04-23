@@ -1,0 +1,16 @@
+@use 'global/styles/variables';
+
+.add-edit-artefacts__form {
+  .input,
+  .textarea {
+    margin-bottom: variables.$spacing-8;
+  }
+
+  .submit-button__wrapper {
+    text-align: right;
+
+    .button {
+      min-width: 100px;
+    }
+  }
+}
