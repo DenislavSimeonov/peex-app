@@ -38,7 +38,7 @@ const Accordion = ({
   return (
     <div
       id={anchorLinkId}
-      className={`accordion ${className}`}
+      className={`accordion ${isOpen ? 'accordion--open' : 'accordion--closed'} ${className}`}
       data-testid={dataTestId}
       tabIndex={1}
     >
