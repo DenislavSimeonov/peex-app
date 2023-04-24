@@ -52,5 +52,11 @@
     li {
       padding: variables.$spacing-4 0;
     }
+
+    table,
+    th,
+    td {
+      border: 1px solid black;
+    }
   }
 }

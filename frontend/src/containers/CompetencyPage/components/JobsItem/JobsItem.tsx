@@ -1,4 +1,3 @@
-import { memo } from 'react';
 import { JobsTransformed, ArtefactTransformed, MaterialsTransformed } from 'api/hooks/types';
 import Accordion from 'components/Accordion';
 import { publish } from 'global/events';
@@ -63,4 +62,4 @@ const JobsItem = ({
   );
 };
 
-export default memo(JobsItem);
+export default JobsItem;
