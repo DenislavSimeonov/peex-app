@@ -26,6 +26,7 @@ type JobByLevel = {
 
 const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
   const [openJobIdDetails, setOpenJobIdDetails] = useState<number | null>(null);
+
   const { data: jobs } = useJobsByCompetencyIdApi(profileId, competencyId);
   const { data: artefacts, forceFetching: forceArtefactsFetching } = useArtefactsByCompetencyIdApi(
     userId,
@@ -37,8 +38,8 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
     profileId,
     competencyId,
   );
-  const { data: constants } = useConstantsApi();
 
+  const { data: constants } = useConstantsApi();
   const { jobLevels, messages } = constants || {};
 
   const jobsByLevel =
@@ -56,13 +57,13 @@ const Jobs = ({ userId, profileId, competencyId }: PropsType) => {
     return () => unsubscribe('toggleJobAccordion', (data) => console.log(data));
   }, []);
 
+  const artefactsByJobId = _.groupBy(artefacts, 'jobId');
+  const materialsByJobId = _.groupBy(materials, 'jobId');
+
   const renderJobs = (data: JobsTransformed[]) => {
     if (!data.length) {
       return <NoDataMessage message={messages?.missingJobs} borders={['top']} />;
     }
-
-    const artefactsByJobId = _.groupBy(artefacts, 'jobId');
-    const materialsByJobId = _.groupBy(materials, 'jobId');
 
     return data?.map((job: JobsTransformed) => (
       <JobsItem
