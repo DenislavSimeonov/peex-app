@@ -1,4 +1,4 @@
-import { render, screen } from 'global/test-utils';
+import { fireEvent, render, screen, debug } from 'global/test-utils';
 import { mockI18nDataBySelectedLng } from 'global/test-helpers';
 import App from '../App';
 
@@ -26,6 +26,7 @@ describe('App Components', () => {
     mockI18nDataBySelectedLng('bg');
     setUser();
     render(<App />);
+    debug();
 
     expect(screen.getByTestId('app-header-profiles')).toHaveTextContent('Моите PeEx профили');
     expect(screen.getByTestId('app-header-settings-button')).toHaveTextContent('Настройки');

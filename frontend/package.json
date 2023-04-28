@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "npm run locize:download-all && react-scripts test",
+    "test": "node scripts/test.js",
     "eject": "react-scripts eject",
     "eslint": "eslint 'src/**/*.{js,jsx,ts,tsx,json}'",
     "eslint:fix": "eslint --fix 'src/**/*.{js,jsx,ts,tsx,json}'",
@@ -33,7 +33,9 @@
     "prepare": "cd ../ && husky install",
     "locize:download-en": "locize download --project-id $(grep REACT_APP_LOCIZE_PROJECTID .env | cut -d '=' -f2) --ver latest --language en --namespace translation --path ./src/locales/en",
     "locize:download-bg": "locize download --project-id $(grep REACT_APP_LOCIZE_PROJECTID .env | cut -d '=' -f2) --ver latest --language bg --namespace translation --path ./src/locales/bg",
-    "locize:download-all": "npm run locize:download-en & npm run locize:download-bg"
+    "locize:download-all": "npm run locize:download-en & npm run locize:download-bg",
+    "jest-preview": "jest-preview",
+    "test:debug": "npm-run-all -p test jest-preview"
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +74,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "husky": "^8.0.3",
+    "jest-preview": "^0.3.1",
     "lint-staged": "^13.2.0",
     "prettier": "^2.8.4"
   }

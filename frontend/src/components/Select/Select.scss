@@ -1,5 +1,5 @@
-@use 'global/styles/mixins';
-@use 'global/styles/variables';
+@use '../../global/styles/mixins';
+@use '../../global/styles/variables';
 
 .select {
   padding: variables.$spacing-8;
