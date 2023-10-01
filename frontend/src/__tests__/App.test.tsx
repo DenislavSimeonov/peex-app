@@ -1,4 +1,5 @@
-import { render, screen } from 'global/test-utils';
+import { render, screen, debug } from 'global/test-utils';
+import userEvent from '@testing-library/user-event';
 import { mockI18nDataBySelectedLng } from 'global/test-helpers';
 import App from '../App';
 
@@ -26,6 +27,9 @@ describe('App Components', () => {
     mockI18nDataBySelectedLng('bg');
     setUser();
     render(<App />);
+    userEvent.type(screen.getByTestId('username-input'), 'Test Username 1');
+    userEvent.type(screen.getByTestId('password-input'), 'pass');
+    debug();
 
     expect(screen.getByTestId('app-header-profiles')).toHaveTextContent('Моите PeEx профили');
     expect(screen.getByTestId('app-header-settings-button')).toHaveTextContent('Настройки');

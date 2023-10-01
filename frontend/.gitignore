@@ -26,3 +26,4 @@ yarn-error.log*
 
 # locize
 /src/locales
+pass.js
