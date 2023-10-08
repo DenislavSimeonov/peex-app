@@ -28,6 +28,7 @@ const LoginPage = () => {
     <div className='login-page' data-testid='login-page'>
       <Card type={CardTypes.SECONDARY}>
         <form onSubmit={onSubmit} className='login-page__form'>
+          Test
           <Input
             dataTestId='username'
             label='Username'
