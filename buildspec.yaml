@@ -7,7 +7,7 @@ phases:
       - npm install
   build:
     commands:
-       - cd frontend
+      - cd frontend
       - npm run build
 
 artifacts:
