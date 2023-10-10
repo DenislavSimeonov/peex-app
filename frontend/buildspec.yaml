@@ -13,7 +13,6 @@ phases:
       java: openjdk8
   pre_build:
     commands:
-      - cd frontend
       - npm install
       - apt-get update
       - apt-get install -y jq
@@ -35,6 +34,6 @@ phases:
 
 artifacts:
   files:
-    - "**/*"
+    - '**/*'
   discard-paths: no
-  base-directory: frontend/build
+  base-directory: build
