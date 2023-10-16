@@ -17,7 +17,7 @@ const usePostPut = (baseUrl: string, locale: string) => {
     setError(null);
     setSuccess(false);
 
-    const method = httpRequestMethods.PUT;
+    const method = data.id ? httpRequestMethods.PUT : httpRequestMethods.POST;
     const url = data.id ? `${baseUrl}/${data.id}` : baseUrl;
     const body = JSON.stringify({ ...data, data: { ...data.data, locale } });
 
