@@ -23,7 +23,7 @@ const useLogin = () => {
       password: password,
     });
 
-    fetch(`${process.env.REACT_APP_BACKEND}auth/local`, { method: 'POST', headers, body })
+    fetch(`${process.env.REACT_APP_BACKEND}auth/local`, { method: 'PUT', headers, body })
       .then((response) => {
         if (!response.ok) {
           throw Error(errorMessagesConst.LOGIN_ERROR);
